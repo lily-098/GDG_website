@@ -139,10 +139,10 @@ const SocialLink = styled(motion.a)`
 const teamData = [
   {
     id: 1,
-    name: "Aditya Kumar",
-    role: "GDG Lead",
-    badge: "lead",
-    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg",
+    name: "Avanish Upadhyay",
+    role: "GDG ",
+    badge: "Web Developer",
+    image: "https://res.cloudinary.com/dfstpdwih/image/upload/v1747396588/Codehelp/tmp-4-1747396587840.jpg",
     social: {
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com",
@@ -151,10 +151,10 @@ const teamData = [
   },
   {
     id: 2,
-    name: "Priya Singh",
-    role: "Technical Lead",
-    badge: "core",
-    image: "https://images.pexels.com/photos/3776932/pexels-photo-3776932.jpeg",
+    name: "Atishay",
+    role: "Content Writer",
+    badge: "Management",
+    image: "https://res.cloudinary.com/dfstpdwih/image/upload/v1747396578/Codehelp/tmp-3-1747396578290.jpg",
     social: {
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com",
@@ -163,10 +163,10 @@ const teamData = [
   },
   {
     id: 3,
-    name: "Rahul Sharma",
-    role: "Event Organizer",
-    badge: "organizer",
-    image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg",
+    name: "Kunal Srivastava",
+    role: "DSA/CP Mentor",
+    badge: "core",
+    image: "https://res.cloudinary.com/dfstpdwih/image/upload/v1747396598/Codehelp/tmp-5-1747396598470.jpg",
     social: {
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com",
@@ -175,10 +175,10 @@ const teamData = [
   },
   {
     id: 4,
-    name: "Neha Gupta",
+    name: "Anurag Yadav",
     role: "Community Manager",
     badge: "core",
-    image: "https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg",
+    image: "https://res.cloudinary.com/dfstpdwih/image/upload/v1747396567/Codehelp/tmp-2-1747396567070.jpg",
     social: {
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com",
@@ -187,22 +187,10 @@ const teamData = [
   },
   {
     id: 5,
-    name: "Amit Patel",
+    name: "Abhay Chauhan",
     role: "Technical Coordinator",
     badge: "organizer",
-    image: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg",
-    social: {
-      linkedin: "https://linkedin.com",
-      twitter: "https://twitter.com",
-      github: "https://github.com"
-    }
-  },
-  {
-    id: 6,
-    name: "Sneha Verma",
-    role: "Content Lead",
-    badge: "core",
-    image: "https://images.pexels.com/photos/3775131/pexels-photo-3775131.jpeg",
+    image: "https://res.cloudinary.com/dfstpdwih/image/upload/v1747396551/Codehelp/tmp-1-1747396551740.jpg",
     social: {
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com",
