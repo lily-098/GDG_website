@@ -9,6 +9,7 @@ import Footer from './components/Footer'
 import styled from 'styled-components'
 
 import ContactSection from './sections/ContactSection'
+import EventsSection from './sections/EventsSection'
 
 const AppContainer = styled.div`
   display: flex;
@@ -37,7 +38,6 @@ function App() {
         <Main>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path='contact' element={<ContactSection />} />
             {/* Add more routes as needed */}
           </Routes>
         </Main>

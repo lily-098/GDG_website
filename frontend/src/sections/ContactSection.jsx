@@ -2,7 +2,66 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { gsap } from 'gsap';
 import { Mail, MessageSquare, Send, Users, MapPin, Check } from 'lucide-react';
-import './ContactSection.css'; // Assuming you put the styles here
+
+import styled from 'styled-components';
+const Section=styled.section`
+   padding: 5rem 1rem;
+  background-color: ${({ theme }) => theme.colors.background.secondary};
+  color: ${({theme})=>{theme.colors.text.primary}};
+  overflow: hidden;
+`
+const Container=styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+`
+const Header=styled.div`
+   text-align: center;
+  margin-bottom: 4rem;
+`
+const Underline=styled.div`
+ width: 80px;
+  height: 4px;
+  background-color: ${({ theme }) => theme.googleColors.blue.five}; /* blue-500 */
+  margin: 0.75rem auto 1.5rem;
+  border-radius: 2px;
+`
+const Grid=styled.div`
+    display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+`
+const Contactinfo=styled.div`
+ .nforCard {
+ background-color: #f9fafb; /* gray-50 */
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+  height: 100%;} 
+  h3{
+     font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #111827; /* gray-900 */
+  }
+  
+
+  
+`
+const List=styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`
+const Item=styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  color: #374151; /* gray-700 */
+  text-decoration: none;
+  transition: color 0.3s ease;
+  :hover h4{
+    color: ${({ theme }) => theme.googleColors.blue.five}; /* blue-500 */;
+  }
+`
 
 const ContactSection = () => {
   const [formState, setFormState] = useState({
@@ -11,6 +70,7 @@ const ContactSection = () => {
     subject: '',
     message: ''
   });
+
   const [formStatus, setFormStatus] = useState('idle');
 
   const sectionRef = useRef(null);
@@ -103,7 +163,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="contact-section">
+    <Section id="contact" ref={sectionRef} className="contact-section">
       <div className="container">
         <div className="header">
           <motion.h2
@@ -278,7 +338,7 @@ const ContactSection = () => {
           </motion.div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 

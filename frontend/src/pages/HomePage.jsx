@@ -10,6 +10,7 @@ import WinnersSection from '../sections/WinnersSection';
 import TeamSection from '../sections/TeamSection';
 import SponsorsSection from '../sections/SponsorsSection';
 import EventsSection from '../sections/EventsSection';
+import ContactSection from '../sections/ContactSection';
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 const HomePageContainer = styled.div`
@@ -61,7 +62,7 @@ const HomePage = () => {
       <WinnersSection />
       <TeamSection />
       <SponsorsSection />
-      
+      <ContactSection />
     </HomePageContainer>
   );
 };

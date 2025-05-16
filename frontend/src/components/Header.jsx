@@ -60,7 +60,7 @@ const Nav = styled.nav`
   }
 `;
 
-const NavLink = styled(Link)`
+const NavLink = styled.a`
   position: relative;
   color: ${({ theme }) => theme.colors.text.primary};
   font-weight: 500;
@@ -146,11 +146,11 @@ const Header = () => {
       </MenuButton>
 
       <Nav $isOpen={menuOpen}>
-        <NavLink to="/" onClick={closeMenu}>Home</NavLink>
-        <NavLink to="/events" onClick={closeMenu}>Events</NavLink>
-        <NavLink to="/team" onClick={closeMenu}>Team</NavLink>
-        <NavLink to="/resources" onClick={closeMenu}>Resources</NavLink>
-        <NavLink to="/contact" onClick={closeMenu}>Contact</NavLink>
+        <NavLink href="/" onClick={closeMenu}>Home</NavLink>
+        <NavLink href="/#events" onClick={closeMenu}>Events</NavLink>
+        <NavLink href="/#team" onClick={closeMenu}>Team</NavLink>
+        <NavLink href="/#resources" onClick={closeMenu}>Resources</NavLink>
+        <NavLink href="/#contact" onClick={closeMenu}>Contact</NavLink>
       </Nav>
 
       <NavActions>

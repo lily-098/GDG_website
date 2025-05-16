@@ -5,6 +5,7 @@ const googleColors = {
     light: '#8AB4F8',
     dark: '#1A73E8',
     darker: '#0B57D0',
+    five:"'#3b82f6'"
   },
   red: {
     primary: '#EA4335',
