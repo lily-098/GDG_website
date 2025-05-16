@@ -253,7 +253,7 @@ const AboutSection = () => {
         <IllustrationContainer>
           <motion.img
             ref={illustrationRef}
-            src="https://developers.google.com/community/gdg/images/gdg-icon.svg"
+            src="https://res.cloudinary.com/dfstpdwih/image/upload/v1747379399/Codehelp/tmp-1-1747379399376.jpg"
             alt="GDG Illustration"
             style={{ width: '80%', maxWidth: '400px' }}
           />

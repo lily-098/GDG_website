@@ -1,7 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
+import CountdownTimer from '../components/Clock';
+import { format } from 'date-fns';
+import { Clock } from 'lucide-react';
 
 const HeroContainer = styled.section`
   position: relative;
@@ -151,7 +154,16 @@ const FloatingObject = styled.div`
 
 const HeroSection = () => {
   const floatingRef = useRef(null);
+    const [currentTime, setCurrentTime] = useState(new Date());
+    
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setCurrentTime(new Date());
+      }, 1000);
   
+      return () => clearInterval(timer);
+    }, []);
+    
   useEffect(() => {
     if (!floatingRef.current) return;
     
@@ -205,6 +217,17 @@ const HeroSection = () => {
       </FloatingObjects>
       
       <HeroContent>
+        <motion.div 
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                className="absolute top-32 flex items-center gap-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg"
+              >
+                <Clock className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                <span className="text-2xl font-bold text-gray-800 dark:text-white font-mono">
+                  {format(currentTime, 'HH:mm:ss')}
+                </span>
+              </motion.div>
         <HeroTitle
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

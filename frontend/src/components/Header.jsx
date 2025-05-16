@@ -137,7 +137,7 @@ const Header = () => {
       transition={{ duration: 0.5 }}
     >
       <Logo to="/">
-        <img src="https://developers.google.com/site-assets/images/home/google_developers_logo.svg" alt="GDG MMMUT Logo" />
+        <img src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-goog/events/GDG%20-%20logo%20with%20background.png" alt="GDG MMMUT Logo" />
         <span>GDG MMMUT</span>
       </Logo>
 

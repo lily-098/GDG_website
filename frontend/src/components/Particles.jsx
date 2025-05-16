@@ -106,7 +106,7 @@ const ParticleBackground = () => {
 
         if (distance < 100) {
           const angle = Math.atan2(dy, dx);
-          const force = (100 - distance) / 1000;
+          const force = (100 - distance) / 150;
           particle.speedX -= Math.cos(angle) * force;
           particle.speedY -= Math.sin(angle) * force;
         }

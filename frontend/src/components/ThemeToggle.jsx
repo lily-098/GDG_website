@@ -1,9 +1,7 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
-import { FaSun } from 'react-icons/fa';
-import { FaMoon } from 'react-icons/fa';
-
+import { FaSun, FaMoon } from 'react-icons/fa';
 const ToggleButton = styled(motion.button)`
   display: flex;
   align-items: center;

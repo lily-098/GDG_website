@@ -161,25 +161,25 @@ const RegisterButton = styled(motion.a)`
 const eventsData = [
   {
     id: 1,
-    title: "Flutter Workshop",
-    type: "workshop",
+    title: " Hackblitz",
+    type: "Event",
     date: "March 15, 2024",
     time: "10:00 AM - 4:00 PM",
     location: "CS Department, MMMUT",
     capacity: "50 participants",
-    description: "Learn to build beautiful cross-platform applications with Flutter. Perfect for beginners!",
+    description: "Build innovative solutions using different technologies mainly providing solutions to real world challenges!",
     image: "https://images.pexels.com/photos/7504837/pexels-photo-7504837.jpeg"
   },
   {
     id: 2,
-    title: "Cloud Computing Hackathon",
-    type: "hackathon",
+    title: "Web Devlopment",
+    type: "Workshop",
     date: "April 1-2, 2024",
-    time: "24 Hours",
+    time: "3 days",
     location: "Online",
     capacity: "100 teams",
-    description: "Build innovative solutions using Google Cloud Platform. Amazing prizes to be won!",
-    image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg"
+    description: "Learn to build beautiful cross-platform web applications with basics for web devlopment. Perfect for beginners!",
+    image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
   },
   {
     id: 3,
@@ -194,28 +194,17 @@ const eventsData = [
   },
   {
     id: 4,
-    title: "Android Dev Meetup",
-    type: "meetup",
+    title: "App Devlopment",
+    type: "Workshop",
     date: "March 25, 2024",
     time: "5:00 PM - 7:00 PM",
     location: "Seminar Hall, MMMUT",
     capacity: "75 participants",
-    description: "Network with fellow Android developers and share your experiences.",
+    description: "Network with fellow App developers while learning and sharing your experiences.",
     image: "https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg"
   },
   {
     id: 5,
-    title: "Web Development Workshop",
-    type: "workshop",
-    date: "April 5, 2024",
-    time: "11:00 AM - 3:00 PM",
-    location: "Lab 3, CS Department",
-    capacity: "40 participants",
-    description: "Learn modern web development using React and Firebase.",
-    image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
-  },
-  {
-    id: 6,
     title: "Google Cloud Study Jam",
     type: "workshop",
     date: "April 10, 2024",
