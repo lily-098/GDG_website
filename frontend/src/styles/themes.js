@@ -36,7 +36,8 @@ const googleColors = {
     700: '#5F6368',
     800: '#3C4043',
     900: '#202124',
-  }
+  },
+  
 };
 
 export const lightTheme = {
@@ -63,6 +64,7 @@ export const lightTheme = {
     overlay: 'rgba(32, 33, 36, 0.1)',
   },
   googleColors,
+  
 };
 
 export const darkTheme = {

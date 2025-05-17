@@ -1,0 +1,25 @@
+import React from 'react'
+import "../styles/Logo.css"
+import styled from 'styled-components'
+const Symbol =styled.a`
+  display: flex;
+   align-items: center;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  gap: 0.4rem;
+  color: ${({theme})=>theme.colors.text.primary};
+`
+export default function Logo() {
+  return (
+    <Symbol href='#home' className='logo'>
+                <div className="logo-colors">
+                  <span className="logo-blue"></span>
+                  <span className="logo-red"></span>
+                  <span className="logo-yellow"></span>
+                  <span className="logo-green"></span>
+                </div>
+                <span className="logo-text">GDG MMMUT</span>
+    </Symbol>
+  )
+}

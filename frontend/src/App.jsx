@@ -7,10 +7,6 @@ import HomePage from './pages/HomePage'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import styled from 'styled-components'
-
-import ContactSection from './sections/ContactSection'
-import EventsSection from './sections/EventsSection'
-
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;

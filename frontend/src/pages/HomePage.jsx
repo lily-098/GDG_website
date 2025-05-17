@@ -11,6 +11,7 @@ import TeamSection from '../sections/TeamSection';
 import SponsorsSection from '../sections/SponsorsSection';
 import EventsSection from '../sections/EventsSection';
 import ContactSection from '../sections/ContactSection';
+import "../styles/Hero.css"
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 const HomePageContainer = styled.div`

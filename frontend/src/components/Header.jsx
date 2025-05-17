@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { useTheme } from '../contexts/ThemeContext'
 import ThemeToggle from './ThemeToggle'
 import { FaBars, FaTimes } from 'react-icons/fa'
-
+import Logo from './Logo'
 const HeaderContainer = styled(motion.header)`
   position: fixed;
   top: 0;
@@ -23,20 +23,6 @@ const HeaderContainer = styled(motion.header)`
   box-shadow: ${props => props.$scrolled 
     ? `0 2px 10px ${props.theme.colors.shadow}` 
     : 'none'};
-`;
-
-const Logo = styled(Link)`
-  display: flex;
-  align-items: center;
-  font-family: 'Google Sans', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: ${({ theme }) => theme.colors.text.primary};
-
-  img {
-    height: 36px;
-    margin-right: 0.5rem;
-  }
 `;
 
 const Nav = styled.nav`
@@ -136,11 +122,7 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <Logo to="/">
-        <img src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-goog/events/GDG%20-%20logo%20with%20background.png" alt="GDG MMMUT Logo" />
-        <span>GDG MMMUT</span>
-      </Logo>
-
+      <Logo />
       <MenuButton onClick={toggleMenu}>
         {menuOpen ? <FaTimes /> : <FaBars />}
       </MenuButton>

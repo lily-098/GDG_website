@@ -1,78 +1,270 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { gsap } from 'gsap';
-import { Mail, MessageSquare, Send, Users, MapPin, Check } from 'lucide-react';
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { gsap } from "gsap";
+import { Mail, MessageSquare, Send, Users, MapPin, Check } from "lucide-react";
+import styled, { keyframes } from "styled-components";
 
-import styled from 'styled-components';
-const Section=styled.section`
-   padding: 5rem 1rem;
-  background-color: ${({ theme }) => theme.colors.background.secondary};
-  color: ${({theme})=>{theme.colors.text.primary}};
+// Keyframes for spinner animation
+const spin = keyframes`
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+// Container
+export const Contact = styled.section`
+  padding: 5rem 1rem;
+  background-color: white;
+  color: #111;
   overflow: hidden;
-`
-const Container=styled.div`
+`;
+
+export const Container = styled.div`
   max-width: 900px;
   margin: 0 auto;
-`
-const Header=styled.div`
-   text-align: center;
+`;
+
+// Header
+export const Header = styled.header`
+  text-align: center;
   margin-bottom: 4rem;
-`
-const Underline=styled.div`
- width: 80px;
-  height: 4px;
-  background-color: ${({ theme }) => theme.googleColors.blue.five}; /* blue-500 */
-  margin: 0.75rem auto 1.5rem;
-  border-radius: 2px;
-`
-const Grid=styled.div`
-    display: grid;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .underline {
+    width: 80px;
+    height: 4px;
+    background-color: #3b82f6;
+    margin: 0.75rem auto 1.5rem;
+    border-radius: 2px;
+  }
+
+  p {
+    font-size: 1.125rem;
+    color: #4b5563;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+`;
+
+// Grid
+export const Grid = styled.div`
+  display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 2rem;
-`
-const Contactinfo=styled.div`
- .nforCard {
- background-color: #f9fafb; /* gray-50 */
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
-  height: 100%;} 
-  h3{
-     font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: #111827; /* gray-900 */
-  }
-  
 
-  
-`
-const List=styled.div`
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+// Contact Info
+export const ContactInfo = styled.div`
+  .info-card {
+    background-color: #f9fafb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+  }
+
+  h3 {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #111827;
+  }
+
+  .info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    color: #374151;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover h4 {
+      color: #3b82f6;
+    }
+
+    .icon-bg {
+      margin-top: 0.25rem;
+      padding: 0.5rem;
+      background-color: #bfdbfe;
+      border-radius: 0.75rem;
+      color: #3b82f6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background-color: #3b82f6;
+        color: white;
+      }
+    }
+
+    h4 {
+      margin: 0;
+      font-weight: 600;
+      color: #111827;
+      transition: color 0.3s ease;
+    }
+
+    p {
+      margin: 0.25rem 0 0;
+      color: #6b7280;
+    }
+  }
+`;
+
+// Quick Response
+export const QuickResponse = styled.div`
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #dbeafe;
+  border-radius: 0.75rem;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+
+  h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: #374151;
+  }
+`;
+
+// Contact Form
+export const ContactForm = styled.div`
+  form {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    h3 {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #111827;
+    }
+  }
+`;
+
+// Form Inputs
+export const Row = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+export const InputGroup = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-`
-const Item=styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  color: #374151; /* gray-700 */
-  text-decoration: none;
-  transition: color 0.3s ease;
-  :hover h4{
-    color: ${({ theme }) => theme.googleColors.blue.five}; /* blue-500 */;
+
+  label {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4b5563;
   }
-`
+
+  input,
+  textarea {
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5db;
+    font-size: 1rem;
+    color: #111827;
+    background-color: white;
+    resize: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    }
+
+    &:disabled {
+      background-color: #f3f4f6;
+      cursor: not-allowed;
+      color: #9ca3af;
+    }
+  }
+`;
+
+// Form Footer
+export const FormFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #3b82f6;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+
+    &:hover:not(.disabled) {
+      background-color: #2563eb;
+    }
+
+    &:active:not(.disabled) {
+      transform: scale(0.95);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+`;
+
+// Spinner
+export const Spinner = styled.div`
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: ${spin} 1s linear infinite;
+`;
 
 const ContactSection = () => {
   const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
-
-  const [formStatus, setFormStatus] = useState('idle');
-
+  const [formStatus, setFormStatus] = useState("idle");
   const sectionRef = useRef(null);
   const formRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
@@ -90,23 +282,23 @@ const ContactSection = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormState(prev => ({ ...prev, [name]: value }));
+    setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormStatus('submitting');
+    setFormStatus("submitting");
 
     setTimeout(() => {
-      setFormStatus('success');
+      setFormStatus("success");
       setTimeout(() => {
         setFormState({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
         });
-        setFormStatus('idle');
+        setFormStatus("idle");
       }, 3000);
     }, 1500);
   };
@@ -116,20 +308,20 @@ const ContactSection = () => {
       icon: <Mail size={24} />,
       title: "Email Us",
       content: "gdg.mmmut@gmail.com",
-      link: "mailto:gdg.mmmut@gmail.com"
+      link: "mailto:gdg.mmmut@gmail.com",
     },
     {
       icon: <MapPin size={24} />,
       title: "Visit Us",
       content: "MMMUT, Gorakhpur, Uttar Pradesh, India",
-      link: "https://maps.google.com/?q=MMMUT+Gorakhpur"
+      link: "https://maps.google.com/?q=MMMUT+Gorakhpur",
     },
     {
       icon: <Users size={24} />,
       title: "Join Community",
       content: "Google Developers Group",
-      link: "https://gdg.community.dev/"
-    }
+      link: "https://gdg.community.dev/",
+    },
   ];
 
   const formVariants = {
@@ -137,35 +329,15 @@ const ContactSection = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
-    }
-  };
-
-  const infoVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { 
-        duration: 0.6,
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.5 }
-    }
+      transition: { duration: 0.6 },
+    },
   };
 
   return (
-    <Section id="contact" ref={sectionRef} className="contact-section">
-      <div className="container">
-        <div className="header">
+    <Contact id="contact" ref={sectionRef}>
+      <Container>
+        {/* Header */}
+        <Header>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -181,59 +353,60 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Have questions about GDG MMMUT or interested in collaborating? We'd love to hear from you! Reach out to us through any of the channels below.
+            Have questions about GDG MMMUT or interested in collaborating? We'd
+            love to hear from you! Reach out to us through any of the channels
+            below.
           </motion.p>
-        </div>
+        </Header>
 
-        <div className="grid">
-          <motion.div 
-            className="contact-info"
-            variants={infoVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+        {/* Grid */}
+        <Grid>
+          {/* Contact Info */}
+          <ContactInfo>
             <div className="info-card">
               <h3>Contact Information</h3>
               <div className="info-list">
-                {contactInfo.map(item => (
-                  <motion.a
+                {contactInfo.map((item) => (
+                  <a
                     key={item.title}
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="info-item"
-                    variants={itemVariants}
                   >
-                    <div className="icon-bg">
-                      {item.icon}
-                    </div>
+                    <div className="icon-bg">{item.icon}</div>
                     <div>
                       <h4>{item.title}</h4>
                       <p>{item.content}</p>
                     </div>
-                  </motion.a>
+                  </a>
                 ))}
               </div>
-
-              <div className="quick-response">
-                <h4><MessageSquare size={18} /> Quick Response</h4>
-                <p>We typically respond to inquiries within 24-48 hours. For urgent matters, please contact us directly via email.</p>
-              </div>
+              <QuickResponse>
+                <h4>
+                  <MessageSquare size={18} /> Quick Response
+                </h4>
+                <p>
+                  We typically respond to inquiries within 24-48 hours. For
+                  urgent matters, please contact us directly via email.
+                </p>
+              </QuickResponse>
             </div>
-          </motion.div>
+          </ContactInfo>
 
-          <motion.div
-            className="contact-form"
-            variants={formVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <form ref={formRef} onSubmit={handleSubmit}>
+          {/* Contact Form */}
+          <ContactForm>
+            <motion.form
+              ref={formRef}
+              onSubmit={handleSubmit}
+              variants={formVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <h3>Send Us a Message</h3>
-              <div className="row">
-                <div className="input-group">
+              <Row>
+                <InputGroup>
                   <label htmlFor="name">Your Name</label>
                   <input
                     type="text"
@@ -243,10 +416,10 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     placeholder="John Doe"
-                    disabled={formStatus === 'submitting'}
+                    disabled={formStatus === "submitting"}
                   />
-                </div>
-                <div className="input-group">
+                </InputGroup>
+                <InputGroup>
                   <label htmlFor="email">Your Email</label>
                   <input
                     type="email"
@@ -256,89 +429,63 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     placeholder="john@example.com"
-                    disabled={formStatus === 'submitting'}
+                    disabled={formStatus === "submitting"}
                   />
-                </div>
-              </div>
-
-              <div className="input-group">
-                <label htmlFor="subject">Subject</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formState.subject}
-                  onChange={handleChange}
-                  required
-                  placeholder="How can we help you?"
-                  disabled={formStatus === 'submitting'}
-                />
-              </div>
-
-              <div className="input-group">
+                </InputGroup>
+              </Row>
+              <Row>
+                <InputGroup>
+                  <label htmlFor="subject">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formState.subject}
+                    onChange={handleChange}
+                    required
+                    placeholder="Your Subject"
+                    disabled={formStatus === "submitting"}
+                  />
+                </InputGroup>
+              </Row>
+              <InputGroup>
                 <label htmlFor="message">Your Message</label>
                 <textarea
                   id="message"
                   name="message"
+                  rows="4"
                   value={formState.message}
                   onChange={handleChange}
                   required
-                  rows={5}
-                  placeholder="Tell us how we can assist you..."
-                  disabled={formStatus === 'submitting'}
+                  placeholder="Write your message here..."
+                  disabled={formStatus === "submitting"}
                 ></textarea>
-              </div>
-
-              <div className="form-footer">
-                <motion.button
+              </InputGroup>
+              <FormFooter>
+                <button
                   type="submit"
-                  disabled={formStatus === 'submitting'}
-                  whileHover={formStatus !== 'submitting' ? { scale: 1.05 } : {}}
-                  whileTap={formStatus !== 'submitting' ? { scale: 0.95 } : {}}
-                  className={`btn-submit ${formStatus === 'submitting' ? 'disabled' : ''}`}
+                  className={`btn-submit ${
+                    formStatus === "submitting" ? "disabled" : ""
+                  }`}
+                  disabled={formStatus === "submitting"}
                 >
-                  {formStatus === 'submitting' ? (
+                  {formStatus === "submitting" && <Spinner />}
+                  {formStatus === "success" ? (
                     <>
-                      <svg
-                        className="spinner"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="spinner-bg"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="spinner-fg"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 010 16v-4l-3 3 3 3v-4a8 8 0 01-8-8z"
-                        ></path>
-                      </svg>
-                      Sending...
-                    </>
-                  ) : formStatus === 'success' ? (
-                    <>
-                      <Check size={20} className="icon" />
-                      Sent
+                      <Check size={18} /> Sent!
                     </>
                   ) : (
                     <>
-                      <Send size={20} className="icon" />
-                      Send Message
+                      <Send size={18} /> Send Message
                     </>
                   )}
-                </motion.button>
-              </div>
-            </form>
-          </motion.div>
-        </div>
-      </div>
-    </Section>
+                </button>
+              </FormFooter>
+            </motion.form>
+          </ContactForm>
+        </Grid>
+      </Container>
+    </Contact>
   );
 };
 
