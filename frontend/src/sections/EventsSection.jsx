@@ -1,7 +1,8 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { motion, useInView } from 'framer-motion';
 import { FaCalendar, FaMapMarkerAlt, FaClock, FaUsers } from 'react-icons/fa';
+import RegisterModal from '../components/RegisterForm';
 
 const EventsSectionContainer = styled.section`
   padding: 6rem 2rem;
@@ -138,7 +139,7 @@ const EventDescription = styled.p`
   line-height: 1.6;
 `;
 
-const RegisterButton = styled(motion.a)`
+const RegisterButton = styled(motion.button)`
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background-color: ${({ theme }) => theme.colors.primary};
@@ -217,6 +218,7 @@ const eventsData = [
 ];
 
 const EventsSection = () => {
+  const [close,setclose]=useState(true)
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
   
@@ -240,7 +242,9 @@ const EventsSection = () => {
       }
     }
   };
-  
+  function handleregister(){
+    setclose(!close);
+  }
   return (
     <EventsSectionContainer id="events" className="animate-section">
       <SectionContent ref={sectionRef}>
@@ -292,9 +296,10 @@ const EventsSection = () => {
                   <EventDescription>{event.description}</EventDescription>
                   
                   <RegisterButton
-                    href="#"
+                 
                     whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileTap={{ scale: 0.95 }} 
+                    onClick={handleregister}
                   >
                     Register Now
                   </RegisterButton>
@@ -304,7 +309,9 @@ const EventsSection = () => {
           </EventsGrid>
         </motion.div>
       </SectionContent>
+      {!close ? <RegisterModal  events={eventsData} onClose={handleregister} /> :""}
     </EventsSectionContainer>
+
   );
 };
 

@@ -1,15 +1,15 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { FaMoon, FaRegSun, FaSun } from 'react-icons/fa';
+
 const ToggleButton = styled(motion.button)`
   display: flex;
   align-items: center;
   justify-content: center;
   background: none;
   border: none;
-  width: 40px;
-  height: 40px;
+  padding: 1rem;
   border-radius: 50%;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.text.primary};

@@ -95,9 +95,8 @@ const ScrollToTop = styled(motion.button)`
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  width: 45px;
-  height: 45px;
-  background-color: ${({ theme }) => theme.colors.primary};
+ padding: 1rem;
+  background-color: ${({ theme }) => theme.colors.secondary};
   color: white;
   border-radius: 50%;
   display: flex;
@@ -110,8 +109,8 @@ const ScrollToTop = styled(motion.button)`
   &:hover {
     background-color: ${({ theme }) => 
       theme.name === 'light' 
-        ? theme.googleColors.blue.dark 
-        : theme.googleColors.blue.light
+        ? theme.googleColors.green.dark 
+        : theme.googleColors.green.light
     };
   }
 `;
