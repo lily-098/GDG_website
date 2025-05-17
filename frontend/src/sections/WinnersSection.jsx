@@ -28,7 +28,7 @@ const SectionTitle = styled.h2`
     bottom: -0.5rem;
     height: 4px;
     width: 60px;
-    background-color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.background};
   }
 `;
 const SectionDescription = styled.p`
