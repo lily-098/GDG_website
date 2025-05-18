@@ -218,7 +218,8 @@ const eventsData = [
 ];
 
 const EventsSection = () => {
-  const [close,setclose]=useState(true)
+  const [close,setclose]=useState(true);
+  const [activeEvent,setActiveEvent]=useState();
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
   
@@ -242,8 +243,11 @@ const EventsSection = () => {
       }
     }
   };
-  function handleregister(){
+  function handleregister(event){
+    console.log("hn",event)
+    setActiveEvent(event)
     setclose(!close);
+
   }
   return (
     <EventsSectionContainer id="events" className="animate-section">
@@ -299,7 +303,7 @@ const EventsSection = () => {
                  
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }} 
-                    onClick={handleregister}
+                    onClick={()=>handleregister(event)}
                   >
                     Register Now
                   </RegisterButton>
@@ -309,7 +313,7 @@ const EventsSection = () => {
           </EventsGrid>
         </motion.div>
       </SectionContent>
-      {!close ? <RegisterModal  events={eventsData} onClose={handleregister} /> :""}
+      {!close ? <RegisterModal  event={activeEvent} onClose={handleregister} /> :""}
     </EventsSectionContainer>
 
   );

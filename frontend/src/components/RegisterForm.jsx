@@ -1,8 +1,119 @@
 import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import '../styles/RegisterModal.css';
+import styled from 'styled-components';
 
-const RegisterModal = ({ event, onClose }) => {
+
+const ModalOverlay=styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn var(--transition-short);
+`
+const Modal=styled.div`
+background-color: ${({theme})=>theme.colors.background.secondary};
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px var(--shadow-color-strong);
+  position: relative;
+  animation: slideIn var(--transition-medium);`
+
+const ModalClose=styled.div`
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: none;
+    border: none;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    color: ${({theme})=>theme.googleColors.blue.primary};
+    transition: color var(--transition-short), transform var(--transition-short);
+    z-index: 10;
+
+`
+const ModalHeader=styled.div`
+ padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+  h2{
+     font-size: var(--font-size-2xl);
+  margin: 0 0 var(--spacing-md);
+  color: ${({theme})=>theme.colors.text.primary};
+  }
+    
+`
+const FormGroup=styled.div`
+ margin-bottom: var(--spacing-lg);
+ label{
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+    color: ${({theme})=>theme.colors.text.primary};
+ }
+ input,select,textarea{
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+  background-color: ${({theme})=>theme.colors.background.secondary};
+  color: ${({theme})=>theme.colors.text.primary};
+  font-size: var(--font-size-md);
+  transition: border-color var(--transition-short), box-shadow var(--transition-short);
+ }
+ input:focus,select:focus,textarea:focus{
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.1);
+ }
+ .error{
+    border-color: var(--accent-color);
+ }
+`
+const EventSummary=styled.div`
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-md);
+    background-color: ${({theme})=>theme.colors.background.primary};
+    border-radius: var(--radius-md);
+  h3{
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+    color: ${({theme})=>theme.colors.text.primary};
+  }
+  p{
+     margin-bottom: var(--spacing-sm);
+     color: ${({theme})=>theme.colors.text.secondary};
+  }
+  `
+  const SuccessContainer=styled.div`
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-xl);
+  text-align: center;
+    h3{
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-md);
+        color:${({theme})=>theme.colors.text.secondary};
+    }
+    p{
+        color: ${({theme})=>theme.colors.text.tertiary};
+       margin-bottom: var(--spacing-md);
+       max-width: 400px;
+    }
+  `
+const RegisterModal = ( {event, onClose} ) => {
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -12,7 +123,7 @@ const RegisterModal = ({ event, onClose }) => {
     branch: '',
     reason: ''
   });
-  
+  console.log("ye h event",event)
   const [errors, setErrors] = useState({});
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -104,13 +215,13 @@ const RegisterModal = ({ event, onClose }) => {
   };
 
   return (
-    <div className="modal-overlay" onClick={handleModalClick}>
-      <div className="modal">
-        <button className="modal-close" onClick={onClose}>
+    <ModalOverlay onClick={handleModalClick}>
+      <Modal >
+        <ModalClose onClick={onClose} className='modal-close'>
           <X size={24} />
-        </button>
+        </ModalClose>
         
-        <div className="modal-header">
+        <ModalHeader >
           <h2>Register for {event?.title}</h2>
           {!submitted && (
             <div className="step-indicator">
@@ -121,13 +232,13 @@ const RegisterModal = ({ event, onClose }) => {
               <div className={`step ${step >= 3 ? 'active' : ''}`}>3</div>
             </div>
           )}
-        </div>
+        </ModalHeader>
         
         {!submitted ? (
           <form onSubmit={handleSubmit}>
             {step === 1 && (
               <div className="form-step">
-                <div className="form-group">
+                <FormGroup>
                   <label htmlFor="fullName">Full Name</label>
                   <input
                     type="text"
@@ -138,9 +249,9 @@ const RegisterModal = ({ event, onClose }) => {
                     className={errors.fullName ? 'error' : ''}
                   />
                   {errors.fullName && <div className="error-message">{errors.fullName}</div>}
-                </div>
+                </FormGroup>
                 
-                <div className="form-group">
+                <FormGroup>
                   <label htmlFor="email">Email</label>
                   <input
                     type="email"
@@ -151,9 +262,9 @@ const RegisterModal = ({ event, onClose }) => {
                     className={errors.email ? 'error' : ''}
                   />
                   {errors.email && <div className="error-message">{errors.email}</div>}
-                </div>
+                </FormGroup>
                 
-                <div className="form-group">
+                <FormGroup>
                   <label htmlFor="phone">Phone Number</label>
                   <input
                     type="tel"
@@ -164,7 +275,7 @@ const RegisterModal = ({ event, onClose }) => {
                     className={errors.phone ? 'error' : ''}
                   />
                   {errors.phone && <div className="error-message">{errors.phone}</div>}
-                </div>
+                </FormGroup>
                 
                 <div className="form-buttons">
                   <button type="button" className="btn btn-primary" onClick={nextStep}>
@@ -176,7 +287,7 @@ const RegisterModal = ({ event, onClose }) => {
             
             {step === 2 && (
               <div className="form-step">
-                <div className="form-group">
+                <FormGroup>
                   <label htmlFor="college">College Name</label>
                   <input
                     type="text"
@@ -187,9 +298,9 @@ const RegisterModal = ({ event, onClose }) => {
                     className={errors.college ? 'error' : ''}
                   />
                   {errors.college && <div className="error-message">{errors.college}</div>}
-                </div>
+                </FormGroup>
                 
-                <div className="form-group">
+                <FormGroup>
                   <label htmlFor="year">Year of Study</label>
                   <select
                     id="year"
@@ -207,9 +318,9 @@ const RegisterModal = ({ event, onClose }) => {
                     <option value="other">Other</option>
                   </select>
                   {errors.year && <div className="error-message">{errors.year}</div>}
-                </div>
+                </FormGroup>
                 
-                <div className="form-group">
+                <FormGroup>
                   <label htmlFor="branch">Branch</label>
                   <input
                     type="text"
@@ -220,7 +331,7 @@ const RegisterModal = ({ event, onClose }) => {
                     className={errors.branch ? 'error' : ''}
                   />
                   {errors.branch && <div className="error-message">{errors.branch}</div>}
-                </div>
+                </FormGroup>
                 
                 <div className="form-buttons">
                   <button type="button" className="btn btn-outline" onClick={prevStep}>
@@ -235,7 +346,7 @@ const RegisterModal = ({ event, onClose }) => {
             
             {step === 3 && (
               <div className="form-step">
-                <div className="form-group">
+                <FormGroup>
                   <label htmlFor="reason">Why do you want to join this event?</label>
                   <textarea
                     id="reason"
@@ -246,14 +357,14 @@ const RegisterModal = ({ event, onClose }) => {
                     className={errors.reason ? 'error' : ''}
                   ></textarea>
                   {errors.reason && <div className="error-message">{errors.reason}</div>}
-                </div>
+                </FormGroup>
                 
-                <div className="event-details-summary">
+                <EventSummary>
                   <h3>Event Details</h3>
                   <p><strong>Date:</strong> {event?.date}</p>
                   <p><strong>Time:</strong> {event?.time}</p>
                   <p><strong>Location:</strong> {event?.location}</p>
-                </div>
+                </EventSummary>
                 
                 <div className="form-buttons">
                   <button type="button" className="btn btn-outline" onClick={prevStep}>
@@ -271,7 +382,7 @@ const RegisterModal = ({ event, onClose }) => {
             )}
           </form>
         ) : (
-          <div className="success-container">
+          <SuccessContainer>
             <div className="success-icon">✓</div>
             <h3>Registration Successful!</h3>
             <p>Thank you for registering for {event?.title}. We've sent a confirmation email to {formData.email} with all the details.</p>
@@ -279,10 +390,10 @@ const RegisterModal = ({ event, onClose }) => {
             <button className="btn btn-primary" onClick={onClose}>
               Close
             </button>
-          </div>
+          </SuccessContainer>
         )}
-      </div>
-    </div>
+      </Modal>
+    </ModalOverlay>
   );
 };
 
