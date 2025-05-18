@@ -8,7 +8,7 @@ import {
   FaYoutube,
   FaArrowUp 
 } from 'react-icons/fa';
-
+import Logo from './Logo';
 const FooterContainer = styled.footer`
   background-color: ${({ theme }) => theme.colors.background.secondary};
   color: ${({ theme }) => theme.colors.text.secondary};
@@ -127,7 +127,10 @@ const Footer = () => {
     <FooterContainer>
       <FooterContent>
         <FooterSection>
-          <FooterTitle>GDG MMMUT</FooterTitle>
+
+          <FooterTitle> 
+            <Logo />
+            </FooterTitle>
           <p>
             Google Developer Group MMMUT is a community of passionate developers, 
             designers, and enthusiasts who come together to learn, share, and grow 

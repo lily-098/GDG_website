@@ -12,6 +12,7 @@ import SponsorsSection from '../sections/SponsorsSection';
 import EventsSection from '../sections/EventsSection';
 import ContactSection from '../sections/ContactSection';
 import "../styles/Hero.css"
+import Space from '../components/space';
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 const HomePageContainer = styled.div`
@@ -64,6 +65,7 @@ const HomePage = () => {
       <TeamSection />
       <SponsorsSection />
       <ContactSection />
+      <Space />
     </HomePageContainer>
   );
 };
