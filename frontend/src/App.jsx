@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import styled from 'styled-components'
-import Space from './components/space'
+import Space from './components/Space'
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
