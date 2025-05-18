@@ -38,7 +38,6 @@ const Info=styled.div`
   box-shadow: 0 4px 20px var(--shadow-color);
   position: relative;
   overflow: hidden;
-   border: 1px solid ;
   h3{
     color: ${({theme})=>theme.colors.text.primary};
   }
@@ -48,7 +47,7 @@ const Info=styled.div`
 `
 const ContactContainer=styled.div`
   background-color: ${({theme})=>theme.colors.background.secondary};
-  border: 1px solid ;
+  
   h3{
     color:${({theme})=>theme.colors.text.primary};
   }
