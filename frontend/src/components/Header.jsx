@@ -128,11 +128,11 @@ const Header = () => {
       </MenuButton>
 
       <Nav $isOpen={menuOpen}>
-        <NavLink href="/" onClick={closeMenu}>Home</NavLink>
-        <NavLink href="/#events" onClick={closeMenu}>Events</NavLink>
-        <NavLink href="/#team" onClick={closeMenu}>Team</NavLink>
-        <NavLink href="/#resources" onClick={closeMenu}>Resources</NavLink>
-        <NavLink href="/#contact" onClick={closeMenu}>Contact</NavLink>
+        <NavLink href="" onClick={closeMenu}>Home</NavLink>
+        <NavLink href="#events" onClick={closeMenu}>Events</NavLink>
+        <NavLink href="#team" onClick={closeMenu}>Team</NavLink>
+        <NavLink href="#sponsor" onClick={closeMenu}>Resources</NavLink>
+        <NavLink href="#contact" onClick={closeMenu}>Contact</NavLink>
       </Nav>
 
       <NavActions>

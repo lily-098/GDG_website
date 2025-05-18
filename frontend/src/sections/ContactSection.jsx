@@ -163,7 +163,7 @@ const ContactSection = () => {
   };
 
   return (
-    <Contact >
+    <Contact id="contact">
       <Container>
         <h2 className="section-title">Get In Touch</h2>
         <p >

@@ -35,7 +35,6 @@ function App() {
         <Main>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* Add more routes as needed */}
           </Routes>
         </Main>
         <Space />
