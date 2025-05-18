@@ -13,9 +13,10 @@ const ModalOverlay=styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 1000;
+
   animation: fadeIn var(--transition-short);
 `
 const Modal=styled.div`

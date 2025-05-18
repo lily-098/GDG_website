@@ -313,7 +313,9 @@ const EventsSection = () => {
           </EventsGrid>
         </motion.div>
       </SectionContent>
-      {!close ? <RegisterModal  event={activeEvent} onClose={handleregister} /> :""}
+      <div style={{width:"auto", height:"auto"}}>
+        {!close ? <RegisterModal  event={activeEvent} onClose={handleregister} /> :""}
+      </div>
     </EventsSectionContainer>
 
   );
