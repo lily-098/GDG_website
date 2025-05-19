@@ -35,10 +35,12 @@ function App() {
         <Main>
           <Routes>
             <Route path="/" element={<HomePage />} />
+     
           </Routes>
         </Main>
         <Space />
         <Footer />
+        
       </AppContainer>
     </StyledThemeProvider>
   )

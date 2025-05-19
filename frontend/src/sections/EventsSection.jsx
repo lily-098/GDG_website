@@ -250,6 +250,7 @@ const EventsSection = () => {
 
   }
   return (
+    <>
     <EventsSectionContainer id="events" className="animate-section">
       <SectionContent ref={sectionRef}>
         <SectionHeader>
@@ -313,11 +314,11 @@ const EventsSection = () => {
           </EventsGrid>
         </motion.div>
       </SectionContent>
-      <div style={{width:"auto", height:"auto"}}>
-        {!close ? <RegisterModal  event={activeEvent} onClose={handleregister} /> :""}
-      </div>
+     
+        
     </EventsSectionContainer>
-
+    {!close ? <RegisterModal  event={activeEvent} onClose={handleregister} /> :""}
+</>
   );
 };
 

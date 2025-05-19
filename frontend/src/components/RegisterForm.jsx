@@ -24,7 +24,7 @@ background-color: ${({theme})=>theme.colors.background.secondary};
   border-radius: var(--radius-lg);
   width: 90%;
   max-width: 600px;
-  max-height: 90vh;
+
   overflow-y: auto;
   box-shadow: 0 10px 30px var(--shadow-color-strong);
   position: relative;
@@ -216,7 +216,7 @@ const RegisterModal = ( {event, onClose} ) => {
   };
 
   return (
-    <ModalOverlay onClick={handleModalClick}>
+    <ModalOverlay onClick={handleModalClick} className='modal-overlay'>
       <Modal >
         <ModalClose onClick={onClose} className='modal-close'>
           <X size={24} />

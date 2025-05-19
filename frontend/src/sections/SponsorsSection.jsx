@@ -143,14 +143,14 @@ const sponsorsData = {
       id: 1,
       name: "Google Cloud",
       description: "Cloud computing services and APIs",
-      logo: "https://www.gstatic.com/devrel-devsite/prod/v2969aa5c356a1010500272f2e2363a5933e423608b6e3ce52f163977f01d2c79/cloud/images/cloud-logo.svg",
+      logo: "https://res.cloudinary.com/dfstpdwih/image/upload/v1747640809/Codehelp/tmp-4-1747640809293.png",
       website: "https://cloud.google.com"
     },
     {
       id: 2,
       name: "Firebase",
       description: "App development platform",
-      logo: "https://www.gstatic.com/devrel-devsite/prod/v2969aa5c356a1010500272f2e2363a5933e423608b6e3ce52f163977f01d2c79/firebase/images/touchicon-180.png",
+      logo: "https://res.cloudinary.com/dfstpdwih/image/upload/v1747640084/Codehelp/tmp-2-1747640083929.png",
       website: "https://firebase.google.com"
     }
   ],
@@ -166,7 +166,7 @@ const sponsorsData = {
       id: 4,
       name: "TensorFlow",
       description: "Machine learning framework",
-      logo: "https://www.gstatic.com/devrel-devsite/prod/v2969aa5c356a1010500272f2e2363a5933e423608b6e3ce52f163977f01d2c79/tensorflow/images/lockup.svg",
+      logo: "",
       website: "https://tensorflow.org"
     },
     {
