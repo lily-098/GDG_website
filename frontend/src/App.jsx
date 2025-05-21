@@ -8,6 +8,9 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import styled from 'styled-components'
 import Space from './components/Space'
+import About from './pages/About'
+import Events from './pages/Events'
+import Team from './pages/Team'
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -35,6 +38,9 @@ function App() {
         <Main>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path='/events' element={<Events />} />
+            <Route path="/about" element={<About />} />
+            <Route path='/team' element={<Team />} />
      
           </Routes>
         </Main>

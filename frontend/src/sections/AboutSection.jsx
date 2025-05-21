@@ -259,6 +259,8 @@ const AboutSection = () => {
           />
         </IllustrationContainer>
       </AboutWrapper>
+      <button style={{position:"absolute", left:"65%", top:"80%", padding:"1rem", backgroundColor:"#4285F4", color:"#fff", border:"none", borderRadius:"5px", cursor:"pointer" }} onClick={() => { window.location.href = "/about";
+      }}>Learn more about Us</button>
     </AboutSectionContainer>
   );
 };

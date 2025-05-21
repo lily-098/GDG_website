@@ -7,10 +7,10 @@ import ParticlesBackground from '../components/Particles';
 import HeroSection from '../sections/HeroSection';
 import AboutSection from '../sections/AboutSection';
 import WinnersSection from '../sections/WinnersSection';
-import TeamSection from '../sections/TeamSection';
 import SponsorsSection from '../sections/SponsorsSection';
 import EventsSection from '../sections/EventsSection';
 import ContactSection from '../sections/ContactSection';
+import Team from "./Team"
 import "../styles/Hero.css"
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -61,7 +61,6 @@ const HomePage = () => {
       <AboutSection />
       <EventsSection />
       <WinnersSection />
-      <TeamSection />
       <SponsorsSection />
       <ContactSection />
       
