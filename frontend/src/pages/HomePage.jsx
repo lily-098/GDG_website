@@ -10,7 +10,6 @@ import WinnersSection from '../sections/WinnersSection';
 import SponsorsSection from '../sections/SponsorsSection';
 import EventsSection from '../sections/EventsSection';
 import ContactSection from '../sections/ContactSection';
-import Team from "./Team"
 import "../styles/Hero.css"
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
