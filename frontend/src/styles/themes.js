@@ -46,8 +46,15 @@ export const lightTheme = {
     primary: googleColors.blue.primary,
     secondary: googleColors.green.primary,
     accent: googleColors.yellow.primary,
+     accent1: googleColors.red,
+    accent2: googleColors.yellow,
     error: googleColors.red.primary,
-    
+    surface: '#F8F9FA',
+    surfaceElevated: '#FFFFFF',
+
+    textSecondary: '#5F6368',
+    success: '#188038',
+    divider: 'rgba(0, 0, 0, 0.12)',
     background: {
       primary: '#FFFFFF',
       secondary: googleColors.grey[50],
@@ -59,6 +66,21 @@ export const lightTheme = {
       tertiary: googleColors.grey[600],
       inverse: '#FFFFFF',
     },
+    shadows: {
+    small: '0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15)',
+    medium: '0 2px 6px 2px rgba(60, 64, 67, 0.15)',
+    large: '0 4px 8px 3px rgba(60, 64, 67, 0.15), 0 1px 3px rgba(60, 64, 67, 0.3)',
+  },
+  transitions: {
+    default: '0.2s ease',
+    slow: '0.4s ease',
+  },
+  borderRadius: {
+    small: '4px',
+    medium: '8px',
+    large: '16px',
+    circle: '50%',
+  },
     border: googleColors.grey[300],
     shadow: 'rgba(60, 64, 67, 0.3)',
     overlay: 'rgba(32, 33, 36, 0.1)',
@@ -74,6 +96,14 @@ export const darkTheme = {
     secondary: googleColors.green.light,
     accent: googleColors.yellow.light,
     error: googleColors.red.light,
+    accent1: '#F28B82', // Lighter red for dark mode
+    accent2: '#FDD663', // Lighter yellow for dark mode
+    surface: '#303134',
+    surfaceElevated: '#3C4043',
+    textSecondary: '#9AA0A6',
+    success: '#81C995',
+    divider: 'rgba(232, 234, 237, 0.12)',
+   
     
     background: {
       primary: googleColors.grey[900],
@@ -89,6 +119,21 @@ export const darkTheme = {
     border: googleColors.grey[700],
     shadow: 'rgba(0, 0, 0, 0.5)',
     overlay: 'rgba(0, 0, 0, 0.4)',
+    shadows: {
+    small: '0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15)',
+    medium: '0 2px 6px 2px rgba(0, 0, 0, 0.15)',
+    large: '0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.3)',
+  },
+  transitions: {
+    default: '0.2s ease',
+    slow: '0.4s ease',
+  },
+  borderRadius: {
+    small: '4px',
+    medium: '8px',
+    large: '16px',
+    circle: '50%',
+  },
   },
   googleColors,
 };

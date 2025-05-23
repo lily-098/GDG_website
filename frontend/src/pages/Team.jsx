@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { motion, useInView, useScroll } from 'framer-motion';
 import { FaGit, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import Uploadbox from '../../Upload/Uploadbox';
 
 const TeamSectionContainer = styled.section`
   padding: 6rem 2rem;
@@ -953,6 +954,7 @@ const teamData =[
 ;
 
 export default function Team() {
+  const [upload,setUpload]=useState(false);
   const [selectedYear,setSelectedYear]=useState("GDG Lead");
 
   const sectionRef = useRef(null);
@@ -977,9 +979,13 @@ export default function Team() {
       }
     }
   };
+  function handleUpload() {
+    setUpload(true);
+  }
 const filteredMembers = selectedYear.includes( 'GDG Lead')? teamData.filter(member=>member.role.includes("GDG Lead")) : teamData.filter(member => member.year === selectedYear);
 
   return (
+    <>
     <TeamSectionContainer id="team" className="animate-section">
       <SectionContent ref={sectionRef}>
         <SectionHeader>
@@ -1024,6 +1030,7 @@ const filteredMembers = selectedYear.includes( 'GDG Lead')? teamData.filter(memb
               <TeamMemberCard key={member.id} variants={itemVariants}>
                 <MemberImage>
                   <img src={member.image} alt={member.name} />
+                  <button onClick={handleUpload}>Upload</button>
                 </MemberImage>
                 
                 <MemberContent>
@@ -1066,5 +1073,22 @@ const filteredMembers = selectedYear.includes( 'GDG Lead')? teamData.filter(memb
         </motion.div>
       </SectionContent>
     </TeamSectionContainer>
+      {upload &&<motion.div style={{
+  position: "fixed",
+  top: "0",
+  left: "0",
+  right: "0",
+  bottom: "0",
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  backdropFilter: "blur(5px)",
+  display: "flex",
+  justifyContent:" center",
+  alignItems: "center",
+  zIndex: "1000"
+}}
+>
+      <Uploadbox />
+     </motion.div>}
+    </>
   );
 };

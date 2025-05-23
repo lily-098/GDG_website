@@ -6,6 +6,7 @@ import { useTheme } from '../contexts/ThemeContext'
 import ThemeToggle from './ThemeToggle'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import Logo from './Logo'
+import ProfileButton from './ProfileButton'
 const HeaderContainer = styled(motion.header)`
   position: fixed;
   top: 0;
@@ -90,10 +91,21 @@ const MenuButton = styled.button`
 const NavActions = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
-`;
+  gap: 0.5rem;
+    background: ${({ theme }) => theme.colors.background.primary};
+  border: none;
+  border-radius: ${({ theme }) => theme.colors.borderRadius.medium};
+  justify-content: space-evenly;
+  color: ${({ theme }) => theme.colors.text.primary};
+  font-family: 'Google Sans', sans-serif;
+  box-shadow: ${({ theme }) => theme.colors.shadows.small};
+  transition: all ${({ theme }) => theme.colors.transitions.default};
+  padding:0.4rem;
+  
+`;  
 
 const Header = () => {
+  const [authenticated,seAuthenticated] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { toggleTheme } = useTheme();
@@ -136,7 +148,11 @@ const Header = () => {
       </Nav>
 
       <NavActions>
+        <Link to="/auth"   >
+          <button className="btn btn-primary" >SignIn/SignUp</button>
+          </Link>
         <ThemeToggle toggle={toggleTheme} />
+        
       </NavActions>
     </HeaderContainer>
   );

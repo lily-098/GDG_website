@@ -11,16 +11,8 @@ import Space from './components/Space'
 import About from './pages/About'
 import Events from './pages/Events'
 import Team from './pages/Team'
-const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  transition: background-color 0.3s ease;
-`;
-
-const Main = styled.main`
-  flex: 1;
-`;
+import AuthPage from './pages/AuthPage'
+import AppContainer from './utils/AppContainer'
 
 function App() {
   const { theme } = useTheme();
@@ -33,21 +25,16 @@ function App() {
   return (
     <StyledThemeProvider theme={theme}>
       <GlobalStyles />
-      <AppContainer>
-        <Header />
-        <Main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
+      <Routes>
+            <Route element={<AppContainer />} >
+             <Route path='/' index element={<HomePage />} />
             <Route path='/events' element={<Events />} />
             <Route path="/about" element={<About />} />
             <Route path='/team' element={<Team />} />
-     
+            
+             </Route>
+             <Route path='/auth' element={<AuthPage />} />
           </Routes>
-        </Main>
-        <Space />
-        <Footer />
-        
-      </AppContainer>
     </StyledThemeProvider>
   )
 }
