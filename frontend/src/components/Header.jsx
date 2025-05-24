@@ -7,6 +7,7 @@ import ThemeToggle from './ThemeToggle'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import Logo from './Logo'
 import ProfileButton from './ProfileButton'
+import { useAuth } from '../contexts/useAuth'
 const HeaderContainer = styled(motion.header)`
   position: fixed;
   top: 0;
@@ -106,6 +107,7 @@ const NavActions = styled.div`
 
 const Header = () => {
   const [authenticated,seAuthenticated] = useState(true);
+  const {isAuthenticated}=useAuth()
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { toggleTheme } = useTheme();
@@ -148,11 +150,11 @@ const Header = () => {
       </Nav>
 
       <NavActions>
-        <Link to="/auth"   >
+        {isAuthenticated && <Link to="/auth"   >
           <button className="btn btn-primary" >SignIn/SignUp</button>
-          </Link>
+          </Link>}
         <ThemeToggle toggle={toggleTheme} />
-        
+        {isAuthenticated && <ProfileButton />}
       </NavActions>
     </HeaderContainer>
   );

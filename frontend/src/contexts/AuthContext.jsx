@@ -43,7 +43,7 @@ function reducer(state, action) {
 }
 
 export default function AuthProvider({ children }) {
-  const API_BASE_URL = "https://incloud-backend.vercel.app/";
+  const API_BASE_URL = "https://vercel.com/itsmeavanishs-projects/gdg-website-2025-oghz/";
 
   const [{ user, isAuthenticated, loading, error, value, fileUrl }, dispatch] =
     useReducer(reducer, initialState);

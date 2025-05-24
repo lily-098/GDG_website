@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, LogOut, Settings, ChevronDown } from 'lucide-react';
+import { useAuth } from '../contexts/useAuth';
 
 const ButtonContainer = styled.div`
   position: absolute;
@@ -102,11 +103,7 @@ const DropdownItem = styled.button`
 
 const ProfileButton = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [user] = useState({
-    name: 'John Doe',
-    email: 'john@gdg.com',
-    photoUrl: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg'
-  });
+  const {user}=useAuth()
 
   return (
     <ButtonContainer>
