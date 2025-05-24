@@ -109,7 +109,7 @@ const ProfileButton = () => {
     <ButtonContainer>
       <Button onClick={() => setIsOpen(!isOpen)}>
         <ProfilePhoto>
-          {user.photoUrl ? (
+          {user?.profilePhoto ? (
             <img src={user?.profilePhoto} alt={user.name} />
           ) : (
             <User size={20} />
