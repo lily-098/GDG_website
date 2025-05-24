@@ -19,7 +19,7 @@ import AuthCallback from './pages/AuthCallback'
 function App() {
   const { theme } = useTheme();
 
-  // Add dynamic title with site name
+  
   useEffect(() => {
     document.title = "GDG MMMUT - Google Developer Group"
   }, []);
