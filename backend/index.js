@@ -5,7 +5,6 @@ const express = require("express");
 const fileupload = require("express-fileupload");
 const passport = require("./config/passport"); // Passport configuration
 const app = express();
-
 // Define the PORT
 const PORT = process.env.PORT || 3000;
 
