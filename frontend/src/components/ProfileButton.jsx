@@ -104,20 +104,20 @@ const DropdownItem = styled.button`
 const ProfileButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const {user}=useAuth()
-
+console.log("Your user is",user)
   return (
     <ButtonContainer>
       <Button onClick={() => setIsOpen(!isOpen)}>
         <ProfilePhoto>
           {user?.profilePhoto ? (
-            <img src={user?.profilePhoto} alt={user.name} />
+            <img src={user?.profilePhoto} alt={user?.name} />
           ) : (
             <User size={20} />
           )}
         </ProfilePhoto>
         <UserInfo>
-          <UserName>{user.name}</UserName>
-          <UserEmail>{user.email}</UserEmail>
+          <UserName>{user?.name}</UserName>
+          <UserEmail>{user?.email}</UserEmail>
         </UserInfo>
         <ChevronDown 
           size={16}
