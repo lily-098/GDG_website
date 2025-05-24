@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://gdg-website-2025-delta.vercel.app/", // Allow requests from your frontend
+    origin: "https://gdg-website-2025-delta.vercel.app", // Allow requests from your frontend
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
     credentials: true, // Allow cookies to be sent with requests (if needed)
   })
