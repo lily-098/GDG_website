@@ -3,7 +3,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
 require('dotenv').config();
-
+console.log( process.env.GOOGLE_CLIENT_ID)
 // Serialize and deserialize user (adjust based on your user model)
 passport.serializeUser((user, done) => {
     done(null, user);
