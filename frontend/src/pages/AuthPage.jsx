@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Eye, EyeOff, Mail, Lock, User, Github as GitHub, Twitter } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User, Github as GitHub, Twitter, Camera } from 'lucide-react';
 
 import {
   FormContainer,
@@ -55,6 +55,7 @@ const AuthPage = () => {
     name: '',
     email: '',
     password: '',
+   profilePhoto:"",
     rememberMe: false
   });
   const [errors, setErrors] = useState({});
@@ -200,6 +201,21 @@ const AuthPage = () => {
               {!isLogin && form.password && (
                 <PasswordStrengthMeter password={form.password} />
               )}
+              {!isLogin && <div style={{display:"flex", flexDirection:"column", justifyContent:"center", alignContent:"center", padding:"1rem" ,gap:"0.2rem",border:"2px solid #c9c5c5", borderRadius:"0.2rem" }}>
+                <Label htmlFor="file-input" style={{display:"flex", alignItems:"center", gap:"0.4rem"}}>
+                  <Camera/>
+                  <span >
+                    Upload Your Profile Photo
+                  </span>
+                </Label>
+                <Input
+                  id="file-input"
+                  type="file"
+                  name="profilePhoto"
+                  onChange={handleChange}
+                  required
+                />
+              </div>}
             </FormGroup>
 
             {isLogin && (

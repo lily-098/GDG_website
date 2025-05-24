@@ -1,8 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import { Code, Globe, Users, Lightbulb, ChartNetworkIcon, Network } from 'lucide-react';
+import { Code, Globe, Users, Lightbulb, ChartNetworkIcon, Network, Container } from 'lucide-react';
 import '../styles/About.css';
 import { FaAd } from 'react-icons/fa';
+import styled from 'styled-components';
 
+const Aboutid=styled.section`
+  background-color: var(--surface);
+  padding: 100px 20px;
+`
 const About = () => {
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
@@ -75,8 +80,8 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="about">
-      <div className="container">
+    <Aboutid className="about">
+      <Container>
         <div ref={sectionRef} className="about-header animate-on-scroll">
           <h2 className="section-title">About GDG MMMUT</h2>
           <p className="about-description">
@@ -119,8 +124,8 @@ const About = () => {
             <span className="stat-label">Years Active</span>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Aboutid>
   );
 };
 

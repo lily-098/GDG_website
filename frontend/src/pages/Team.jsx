@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { motion, useInView, useScroll } from 'framer-motion';
 import { FaGit, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import Uploadbox from '../../Upload/Uploadbox';
-
+import {useAuth} from "../contexts/useAuth"
 const TeamSectionContainer = styled.section`
   padding: 6rem 2rem;
   background-color: ${({ theme }) => theme.colors.background.primary};
@@ -954,9 +954,9 @@ const teamData =[
 ;
 
 export default function Team() {
+  const {fileUrl}=useAuth();
   const [upload,setUpload]=useState(false);
   const [selectedYear,setSelectedYear]=useState("GDG Lead");
-
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
   
@@ -983,6 +983,7 @@ export default function Team() {
     setUpload(true);
   }
 const filteredMembers = selectedYear.includes( 'GDG Lead')? teamData.filter(member=>member.role.includes("GDG Lead")) : teamData.filter(member => member.year === selectedYear);
+console.log("fileUrll",fileUrl)
 
   return (
     <>
@@ -1026,10 +1027,10 @@ const filteredMembers = selectedYear.includes( 'GDG Lead')? teamData.filter(memb
           animate={isInView ? "visible" : "hidden"}
         >
           <TeamGrid>
-            {filteredMembers.map((member) => (
+            {filteredMembers?.map((member) => (
               <TeamMemberCard key={member.id} variants={itemVariants}>
                 <MemberImage>
-                  <img src={member.image} alt={member.name} />
+                  <img src={fileUrl[member.id-1]} alt={member.name} />
                   <button onClick={handleUpload}>Upload</button>
                 </MemberImage>
                 
@@ -1087,7 +1088,7 @@ const filteredMembers = selectedYear.includes( 'GDG Lead')? teamData.filter(memb
   zIndex: "1000"
 }}
 >
-      <Uploadbox />
+      <Uploadbox setUpload={setUpload} />
      </motion.div>}
     </>
   );

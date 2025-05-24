@@ -13,6 +13,7 @@ import Events from './pages/Events'
 import Team from './pages/Team'
 import AuthPage from './pages/AuthPage'
 import AppContainer from './utils/AppContainer'
+import AuthProvider from './contexts/AuthContext'
 
 function App() {
   const { theme } = useTheme();
@@ -23,7 +24,8 @@ function App() {
   }, []);
 
   return (
-    <StyledThemeProvider theme={theme}>
+    <AuthProvider>
+      <StyledThemeProvider theme={theme}>
       <GlobalStyles />
       <Routes>
             <Route element={<AppContainer />} >
@@ -36,6 +38,7 @@ function App() {
              <Route path='/auth' element={<AuthPage />} />
           </Routes>
     </StyledThemeProvider>
+    </AuthProvider>
   )
 }
 
