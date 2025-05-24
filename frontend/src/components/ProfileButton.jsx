@@ -111,7 +111,7 @@ function handlelogout(e){
     <ButtonContainer>
       <Button onClick={() => setIsOpen(!isOpen)}>
         <ProfilePhoto>
-          {user?.ProfilePhoto ? (
+          {user?.profilePhoto ? (
             <img src={user?.profilePhoto} alt={user?.name} />
           ) : (
             <User size={20} />
@@ -143,7 +143,8 @@ function handlelogout(e){
               Settings
             </DropdownItem>
             <DropdownItem>
-              <LogOut size={18} onClick={handlelogout} />
+              <span onClick={handlelogout}><LogOut size={18}  /></span>
+              
               Sign Out
             </DropdownItem>
           </Dropdown>
