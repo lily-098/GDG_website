@@ -14,6 +14,7 @@ import Team from './pages/Team'
 import AuthPage from './pages/AuthPage'
 import AppContainer from './utils/AppContainer'
 import AuthProvider from './contexts/AuthContext'
+import AuthCallback from './pages/AuthCallback'
 
 function App() {
   const { theme } = useTheme();
@@ -36,6 +37,7 @@ function App() {
             
              </Route>
              <Route path='/auth' element={<AuthPage />} />
+             <Route path="/auth/callback" element={<AuthCallback/>} />
           </Routes>
     </StyledThemeProvider>
     </AuthProvider>

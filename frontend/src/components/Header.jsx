@@ -149,10 +149,10 @@ const Header = () => {
       </Nav>
 
       <NavActions>
-        {isAuthenticated && <Link to="/auth"   >
+        {!isAuthenticated && <Link to="/auth"   >
           <button className="btn btn-primary" >SignIn/SignUp</button>
           </Link>}
-          {!isAuthenticated && <ProfileButton />}
+          {isAuthenticated && <ProfileButton />}
         <ThemeToggle toggle={toggleTheme} />
         
       </NavActions>

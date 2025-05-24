@@ -125,7 +125,9 @@ const AuthPage = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
+const handleOAuthLogin = (provider) => {
+  window.location.href = `https://gdg-website-2025-oghz.vercel.app/api/auth/${provider}`;
+};
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -286,15 +288,15 @@ const AuthPage = () => {
             <SocialButtonsContainer>
               <SocialButton type="button">
                 <GoogleIcon />
-                <span>Google</span>
+                <span onClick={handleOAuthLogin("google")}>Google</span>
               </SocialButton>
               <SocialButton type="button">
                 <GitHub size={18} />
-                <span>GitHub</span>
+                <span onClick={handleOAuthLogin("github")}>GitHub</span>
               </SocialButton>
               <SocialButton type="button">
                 <Twitter size={18} />
-                <span>Twitter</span>
+                <span onClick={handleOAuthLogin("twitter")}>Twitter</span>
               </SocialButton>
             </SocialButtonsContainer>
             <SwitchText>

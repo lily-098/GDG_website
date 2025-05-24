@@ -101,7 +101,7 @@ const DropdownItem = styled.button`
 
 const ProfileButton = () => {
   const [isOpen, setIsOpen] = useState(false);
-const {user}=useAuth()
+const {user,logout}=useAuth()
   return (
     <ButtonContainer>
       <Button onClick={() => setIsOpen(!isOpen)}>
@@ -138,7 +138,7 @@ const {user}=useAuth()
               Settings
             </DropdownItem>
             <DropdownItem>
-              <LogOut size={18} />
+              <LogOut size={18} onClick={()=>logout()} />
               Sign Out
             </DropdownItem>
           </Dropdown>
