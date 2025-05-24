@@ -101,13 +101,18 @@ const DropdownItem = styled.button`
 
 const ProfileButton = () => {
   const [isOpen, setIsOpen] = useState(false);
-const {user,logout}=useAuth()
+const {user,logout}=useAuth();
+function handlelogout(e){
+    e.preventDefault();
+    logout();
+   window.location.reload()
+  }
   return (
     <ButtonContainer>
       <Button onClick={() => setIsOpen(!isOpen)}>
         <ProfilePhoto>
           {user?.ProfilePhoto ? (
-            <img src={user?.ProfilePhoto} alt={user?.name} />
+            <img src={user?.profilePhoto} alt={user?.name} />
           ) : (
             <User size={20} />
           )}
@@ -138,7 +143,7 @@ const {user,logout}=useAuth()
               Settings
             </DropdownItem>
             <DropdownItem>
-              <LogOut size={18} onClick={()=>logout()} />
+              <LogOut size={18} onClick={handlelogout} />
               Sign Out
             </DropdownItem>
           </Dropdown>
