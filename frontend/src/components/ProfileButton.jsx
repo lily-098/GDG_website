@@ -5,12 +5,10 @@ import { User, LogOut, Settings, ChevronDown } from 'lucide-react';
 import { useAuth } from '../contexts/useAuth';
 
 const ButtonContainer = styled.div`
-  position: absolute;
-  z-index: 10;
 `;
 
 const Button = styled.button`
-  background: ${({ theme }) => theme.colors.surfaceElevated};
+  background: ${({ theme }) => theme.colors?.background.secondary};
   border: none;
   border-radius: ${({ theme }) => theme.colors.borderRadius.medium};
   padding: 8px;
@@ -29,7 +27,7 @@ const Button = styled.button`
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.text.primary};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.surface};
   }
 `;
 
@@ -103,14 +101,13 @@ const DropdownItem = styled.button`
 
 const ProfileButton = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const {user}=useAuth()
-console.log("Your user is",user)
+const {user}=useAuth()
   return (
     <ButtonContainer>
       <Button onClick={() => setIsOpen(!isOpen)}>
         <ProfilePhoto>
-          {user?.profilePhoto ? (
-            <img src={user?.profilePhoto} alt={user?.name} />
+          {user?.ProfilePhoto ? (
+            <img src={user?.ProfilePhoto} alt={user?.name} />
           ) : (
             <User size={20} />
           )}

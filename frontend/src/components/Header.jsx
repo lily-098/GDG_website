@@ -93,7 +93,7 @@ const NavActions = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-    background: ${({ theme }) => theme.colors.background.primary};
+    background: ${({ theme }) => theme.colors.background.secondary};
   border: none;
   border-radius: ${({ theme }) => theme.colors.borderRadius.medium};
   justify-content: space-evenly;
@@ -106,7 +106,6 @@ const NavActions = styled.div`
 `;  
 
 const Header = () => {
-  const [authenticated,seAuthenticated] = useState(true);
   const {isAuthenticated}=useAuth()
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -150,11 +149,12 @@ const Header = () => {
       </Nav>
 
       <NavActions>
-        {!isAuthenticated && <Link to="/auth"   >
+        {isAuthenticated && <Link to="/auth"   >
           <button className="btn btn-primary" >SignIn/SignUp</button>
           </Link>}
+          {!isAuthenticated && <ProfileButton />}
         <ThemeToggle toggle={toggleTheme} />
-        {isAuthenticated && <ProfileButton />}
+        
       </NavActions>
     </HeaderContainer>
   );
