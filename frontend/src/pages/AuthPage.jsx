@@ -131,7 +131,7 @@ const AuthPage = () => {
     if (!validateForm()) return;
 
     const formData = new FormData();
-    formData.append("name", form.name);
+      if (!isLogin) formData.append("name", form.name);
     formData.append("email", form.email);
     formData.append("password", form.password);
     if (!isLogin) formData.append("profilePhoto", form.profilePhoto);
