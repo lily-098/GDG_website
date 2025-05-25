@@ -104,7 +104,9 @@ const ProfileButton = () => {
 const {user,logout}=useAuth();
 function handlelogout(e){
     e.preventDefault();
+    console.log("logout horha")
     logout();
+    console.log("hogya")
    window.location.reload()
   }
   return (
@@ -143,8 +145,8 @@ function handlelogout(e){
               Settings
             </DropdownItem>
             <DropdownItem>
-              <span onClick={handlelogout}><LogOut size={18}  /></span>
-              
+              <button style={{border:"none"}} onClick={handlelogout}><LogOut size={18}  /></button>
+        
               Sign Out
             </DropdownItem>
           </Dropdown>

@@ -163,15 +163,15 @@ const FilterContainer = styled.div`
 const teamData =[
   {
     "id": 1,
-    "name": "Aditya Pratap Singh",
+    "name": "Avanish Upadhyay",
     "role": "Web Dev Lead",
     "badge": "Web Developer",
     "year": "2024",
     "image": "",
     "social": {
-      "linkedin": "https://linkedin.com",
-      "twitter": "https://twitter.com",
-      "github": "https://github.com"
+      "linkedin": "https://www.linkedin.com/in/avanish633/",
+      "twitter": "https://x.com/AvanishU1807",
+      "github": "https://github.com/itsmeavanish"
     }
   },
   {
@@ -189,7 +189,7 @@ const teamData =[
   },
   {
     "id": 3,
-    "name": "Avanish Upadhyay",
+    "name": "Aditya Pratap Singh",
     "role": "Web Dev Lead",
     "badge": "Web Developer",
     "year": "2024",
