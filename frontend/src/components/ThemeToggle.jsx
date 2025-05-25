@@ -2,15 +2,15 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
 import { FaMoon, FaRegSun, FaSun } from 'react-icons/fa';
+import { Moon } from 'lucide-react';
 
 const ToggleButton = styled(motion.button)`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none;
-  border: none;
-  padding: 1rem;
-  border-radius: 50%;
+
+  height: 3rem;
+  border-radius: 100%;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.text.primary};
   background-color: ${({ theme }) => theme.colors.background.secondary};
@@ -33,7 +33,7 @@ const ThemeToggle = () => {
       transition={{ duration: 0.5 }}
       aria-label={isDarkTheme ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      {isDarkTheme ? <FaSun size={18} /> : <FaMoon size={18} />}
+      {isDarkTheme ? <FaSun size={18} /> : <Moon size={18} />}
     </ToggleButton>
   );
 };

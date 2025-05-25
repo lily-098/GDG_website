@@ -76,7 +76,7 @@ const UploadButton = styled.button`
 `;
 
 export default function Uploadbox({setUpload}) {
-  const API_BASE_URL = "https://incloud-backend.vercel.app/";
+  const API_BASE_URL = "https://gdg-website-2025-oghz.vercel.app/";
   const {url,fileUrl}=useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
