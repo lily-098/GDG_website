@@ -15,7 +15,7 @@ const Button = styled.button`
   padding: 8px 12px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   color: ${({ theme }) => theme.colors.text.primary};
   font-family: 'Google Sans', sans-serif;
   cursor: pointer;
@@ -39,8 +39,8 @@ const Button = styled.button`
 `;
 
 const ProfilePhoto = styled.div`
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   overflow: hidden;
   background: ${({ theme }) => theme.colors.background};
@@ -72,7 +72,7 @@ const UserInfo = styled.div`
 
 const UserName = styled.span`
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12x;
 
   @media (max-width: 768px) {
     font-size: 12px;

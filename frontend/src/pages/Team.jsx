@@ -167,7 +167,7 @@ const teamData =[
     "role": "Web Dev Lead",
     "badge": "Web Developer",
     "year": "2024",
-    "image": "",
+    "image": "https://res.cloudinary.com/dfstpdwih/image/upload/v1747396588/Codehelp/tmp-4-1747396587840.jpg",
     "social": {
       "linkedin": "https://www.linkedin.com/in/avanish633/",
       "twitter": "https://x.com/AvanishU1807",
@@ -193,7 +193,7 @@ const teamData =[
     "role": "Web Dev Lead",
     "badge": "Web Developer",
     "year": "2024",
-    "image": "https://res.cloudinary.com/dfstpdwih/image/upload/v1747396588/Codehelp/tmp-4-1747396587840.jpg",
+    "image": "",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -1030,7 +1030,7 @@ console.log("fileUrll",fileUrl)
             {filteredMembers?.map((member) => (
               <TeamMemberCard key={member.id} variants={itemVariants}>
                 <MemberImage>
-                  <img src={fileUrl[member.id-1]} alt={member.name} />
+                  <img src={member?.image} alt={member.name} />
                   <button onClick={handleUpload}>Upload</button>
                 </MemberImage>
                 
