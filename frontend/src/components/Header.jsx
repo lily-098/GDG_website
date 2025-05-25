@@ -102,6 +102,21 @@ const NavActions = styled.div`
   box-shadow: ${({ theme }) => theme.colors.shadows.small};
   transition: all ${({ theme }) => theme.colors.transitions.default};
   padding:0.4rem;
+  button{
+    padding: 10px 15px; /* Adjust button padding */
+  font-size: 12px; /* Ensure text is legible */
+  }
+  @media (max-width: 768px) {
+  .NavActions {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .NavActions button {
+    width: 100%; /* Full width for buttons on small screens */
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+}
   
 `;  
 
