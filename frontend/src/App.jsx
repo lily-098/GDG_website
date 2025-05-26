@@ -11,6 +11,7 @@ import AppContainer from './utils/AppContainer'
 import AuthProvider from './contexts/AuthContext'
 import AuthCallback from './pages/AuthCallback'
 import About from './pages/About'
+import FollowCursor from './components/FollowCursor'
 
 function App() {
   const { theme } = useTheme();
@@ -24,6 +25,7 @@ function App() {
     <AuthProvider>
       <StyledThemeProvider theme={theme}>
       <GlobalStyles />
+      <FollowCursor />
       <Routes>
             <Route element={<AppContainer />} >
              <Route path='/' index element={<HomePage />} />

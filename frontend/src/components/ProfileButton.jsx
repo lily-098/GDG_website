@@ -6,7 +6,10 @@ import { useAuth } from '../contexts/useAuth';
 
 const ButtonContainer = styled.div`
   position: relative;
-`;
+  :hover{
+    background-color: ${({ theme }) => theme.colors.background.secondary};
+  }
+`
 
 const Button = styled.button`
   background: ${({ theme }) => theme.colors?.background.secondary};

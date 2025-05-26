@@ -1,245 +1,199 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { gsap } from "gsap";
 
-const TeamContainer = styled.div`
-  padding: 80px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-`;
-
-const Header = styled.div`
-  text-align: center;
-  margin-bottom: 60px;
-`;
-
-const Title = styled.h1`
-  font-size: 3rem;
-  color: ${props => props.theme.textPrimary};
-  margin-bottom: 20px;
-`;
-
-const Description = styled.p`
-  font-size: 1.2rem;
-  color: ${props => props.theme.textSecondary};
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.6;
-`;
-
-const FilterContainer = styled.div`
+const Container = styled.div`
+  margin: 4rem auto;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  border-radius: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 `;
 
-const FilterButton = styled.button`
-  padding: 10px 20px;
-  border-radius: 25px;
-  border: 2px solid ${props => props.theme.primary};
-  background: ${props => props.active ? props.theme.primary : 'transparent'};
-  color: ${props => props.active ? 'white' : props.theme.primary};
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: ${props => props.theme.primary};
-    color: white;
-  }
-`;
-
-const TeamGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 30px;
-`;
-
-const MemberCard = styled(motion.div)`
-  background: ${props => props.theme.surfaceElevated};
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px ${props => props.theme.shadowColor};
+const EventCard = styled(motion.div)`
+  background: linear-gradient(145deg, #ffffff, #f1f1f1);
+  border: 2px solid #90caf9;
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 
   &:hover {
-    transform: translateY(-10px);
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
   }
 `;
 
-const MemberImage = styled.div`
-  width: 100%;
-  height: 300px;
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
+const Title = styled(motion.h3)`
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #1976d2;
+`;
+
+const Subtitle = styled(motion.p)`
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #455a64;
+`;
+
+const Countdown = styled.div`
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  color: #1e88e5;
+  display: flex;
+  gap: 0.5rem;
+
+  span {
+    background: #e3f2fd;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const ImageWrapper = styled(motion.div)`
+  height: 20rem;
+  border-radius: 1.5rem;
   overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  &:hover img {
-    transform: scale(1.1);
   }
 `;
 
-const MemberInfo = styled.div`
-  padding: 20px;
-  text-align: center;
+const GlowEffect = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(66, 133, 244, 0.3) 10%, transparent 80%);
+  border-radius: 1.5rem;
+  z-index: -1;
 `;
-
-const MemberName = styled.h3`
-  font-size: 1.4rem;
-  color: ${props => props.theme.textPrimary};
-  margin-bottom: 5px;
-`;
-
-const MemberRole = styled.p`
-  color: ${props => props.theme.primary};
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-`;
-
-const MemberYear = styled.p`
-  color: ${props => props.theme.textSecondary};
-  font-size: 0.9rem;
-  margin-bottom: 15px;
-`;
-
-const SocialLinks = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-`;
-
-const SocialLink = styled.a`
-  color: ${props => props.theme.textSecondary};
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: ${props => props.theme.primary};
-  }
-`;
-
-const Event = () => {
-  const [selectedYear, setSelectedYear] = useState('all');
-
-  const teamMembers = [
+ const upcomingEvents = [
     {
-      name: "John Doe",
-      role: "Community Lead",
-      year: "2024",
-      image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg",
-      social: {
-        github: "https://github.com",
-        linkedin: "https://linkedin.com",
-        twitter: "https://twitter.com"
-      }
-    },
-    {
-      name: "Jane Smith",
-      role: "Technical Lead",
-      year: "2023",
-      image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg",
-      social: {
-        github: "https://github.com",
-        linkedin: "https://linkedin.com",
-        twitter: "https://twitter.com"
-      }
-    },
-    {
-      name: "Mike Johnson",
-      role: "Event Coordinator",
-      year: "2022",
-      image: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg",
-      social: {
-        github: "https://github.com",
-        linkedin: "https://linkedin.com",
-        twitter: "https://twitter.com"
-      }
+      title: "Google I/O Extended MMMUT 2025",
+      date: "May 15, 2025",
+      time: "10:00 AM - 5:00 PM",
+      location: "Central Auditorium, MMMUT Campus",
+      description: "Join us for Google I/O Extended, where we'll stream the keynotes and sessions from Google I/O and host local workshops focused on the latest Google technologies.",
+      image: "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      upcoming: true
     }
   ];
+const NextEventCountdown = () => {
+  const calculateTimeLeft = () => {
+    const eventDate = new Date("2025-06-01T00:00:00"); // Example date
+    const currentTime = new Date();
+    const difference = eventDate - currentTime;
 
-  const filteredMembers = selectedYear === 'all' 
-    ? teamMembers 
-    : teamMembers.filter(member => member.year === selectedYear);
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    gsap.from("img", { opacity: 0, duration: 1, scale: 0.9 });
+  }, []);
 
   return (
-    <TeamContainer>
-      <Header>
-        <Title>Meet Our Team</Title>
-        <Description>
-          Get to know the amazing individuals who make GDG MMMUT possible. Our team
-          is dedicated to fostering a vibrant tech community and organizing
-          impactful events.
-        </Description>
-      </Header>
-
-      <FilterContainer>
-        <FilterButton 
-          active={selectedYear === 'all'} 
-          onClick={() => setSelectedYear('all')}
-        >
-          All
-        </FilterButton>
-        <FilterButton 
-          active={selectedYear === '2024'} 
-          onClick={() => setSelectedYear('2024')}
-        >
-          2024
-        </FilterButton>
-        <FilterButton 
-          active={selectedYear === '2023'} 
-          onClick={() => setSelectedYear('2023')}
-        >
-          2023
-        </FilterButton>
-        <FilterButton 
-          active={selectedYear === '2022'} 
-          onClick={() => setSelectedYear('2022')}
-        >
-          2022
-        </FilterButton>
-      </FilterContainer>
-
-      <TeamGrid>
-        <AnimatePresence>
-          {filteredMembers.map((member, index) => (
-            <MemberCard
-              key={member.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ delay: index * 0.1 }}
+    <Container>
+      <EventCard
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <GlowEffect />
+        <Grid>
+          <div>
+            <Title
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              <MemberImage>
-                <img src={member.image} alt={member.name} />
-              </MemberImage>
-              <MemberInfo>
-                <MemberName>{member.name}</MemberName>
-                <MemberRole>{member.role}</MemberRole>
-                <MemberYear>Class of {member.year}</MemberYear>
-                <SocialLinks>
-                  <SocialLink href={member.social.github} target="_blank">
-                    <Github size={20} />
-                  </SocialLink>
-                  <SocialLink href={member.social.linkedin} target="_blank">
-                    <Linkedin size={20} />
-                  </SocialLink>
-                  <SocialLink href={member.social.twitter} target="_blank">
-                    <Twitter size={20} />
-                  </SocialLink>
-                </SocialLinks>
-              </MemberInfo>
-            </MemberCard>
-          ))}
-        </AnimatePresence>
-      </TeamGrid>
-    </TeamContainer>
+              Next Event Countdown
+            </Title>
+            <Subtitle
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {upcomingEvents[0].title}
+            </Subtitle>
+            <Countdown>
+              {Object.keys(timeLeft).length > 0 ? (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1 }}
+                >
+                  <span>{timeLeft.days}d</span>
+                  <span>{timeLeft.hours}h</span>
+                  <span>{timeLeft.minutes}m</span>
+                  <span>{timeLeft.seconds}s</span>
+                </motion.div>
+              ) : (
+                <div>Event has started!</div>
+              )}
+            </Countdown>
+          </div>
+          <ImageWrapper
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <img
+              src={upcomingEvents[0].image}
+              alt={upcomingEvents[0].title}
+            />
+          </ImageWrapper>
+        </Grid>
+      </EventCard>
+    </Container>
   );
 };
 
-export default Event;
+export default NextEventCountdown;
