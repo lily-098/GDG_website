@@ -1,6 +1,6 @@
-const Registration = require('../models/Registration');
+const Registration = require('../models/EventRegistrationSchema');
 
-exports.registerForEvent = async (req, res) => {
+const registerForEvent = async (req, res) => {
   try {
     const {
       fullName,
@@ -38,3 +38,4 @@ exports.registerForEvent = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+module.exports={registerForEvent}

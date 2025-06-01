@@ -1,7 +1,7 @@
 const sendEmail = require('../config/nodemailer');
 const Contact = require('../models/ContactSchema');
 
-exports.createContact = async (req, res) => {
+ const createContact = async (req, res) => {
   try {
     const { name, email, subject, message } = req.body;
 
@@ -26,3 +26,4 @@ exports.createContact = async (req, res) => {
     return res.status(400).json({ error: error.message });
   }
 };
+module.exports={createContact}
