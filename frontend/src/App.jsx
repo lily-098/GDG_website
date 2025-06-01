@@ -1,17 +1,18 @@
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useTheme } from './contexts/ThemeContext'
 import GlobalStyles from './styles/GlobalStyles'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
-import HomePage from './pages/HomePage'
-import Events from './pages/Events'
-import Team from './pages/Team'
-import AuthPage from './pages/AuthPage'
 import AppContainer from './utils/AppContainer'
-import AuthProvider from './contexts/AuthContext'
-import AuthCallback from './pages/AuthCallback'
-import About from './pages/About'
-import FollowCursor from './components/FollowCursor'
+const HomePage =lazy(()=>import( './pages/HomePage'));
+const Events =lazy(()=>import('./pages/Events'));
+const Team =lazy(()=>import('./pages/Team'));
+const AuthPage=lazy(()=>import('./pages/AuthPage'));
+
+const AuthProvider =lazy(()=>import('./contexts/AuthContext'));
+const AuthCallback =lazy(()=>import('./pages/AuthCallback'));
+const About =lazy(()=>import('./pages/About'));
+const FollowCursor =lazy(()=>import('./components/FollowCursor'));
 
 function App() {
   const { theme } = useTheme();
@@ -23,7 +24,9 @@ function App() {
 
   return (
     <AuthProvider>
-      <StyledThemeProvider theme={theme}>
+      <Suspense fallback={<div>Loading...</div>}>
+      {/* Using StyledThemeProvider to apply the theme */}
+        <StyledThemeProvider theme={theme}>
       <GlobalStyles />
       <FollowCursor />
       <Routes>
@@ -38,6 +41,7 @@ function App() {
              <Route path="/auth/callback" element={<AuthCallback/>} />
           </Routes>
     </StyledThemeProvider>
+      </Suspense>
     </AuthProvider>
   )
 }
