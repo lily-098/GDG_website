@@ -4,6 +4,7 @@ import { useTheme } from './contexts/ThemeContext'
 import GlobalStyles from './styles/GlobalStyles'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 import AppContainer from './utils/AppContainer'
+import Spinner from './components/GDG-Spinner'
 const HomePage =lazy(()=>import( './pages/HomePage'));
 const Events =lazy(()=>import('./pages/Events'));
 const Team =lazy(()=>import('./pages/Team'));
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <AuthProvider>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Spinner />}>
       {/* Using StyledThemeProvider to apply the theme */}
         <StyledThemeProvider theme={theme}>
       <GlobalStyles />
