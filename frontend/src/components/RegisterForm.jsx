@@ -194,7 +194,7 @@ const RegisterModal = ( {event, onClose} ) => {
     }
   };
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
   e.preventDefault();
 
   if (validateStep(step)) {
@@ -226,10 +226,22 @@ const RegisterModal = ( {event, onClose} ) => {
     }
   }
 };
+  const handleModalClick = (e) => {
+    // Only close if clicking the overlay, not the modal content
+    if (e.target.classList.contains('modal-overlay')) {
+      onClose();
 
+
+
+
+
+
+
+    }
+  };
 
   return (
-    <ModalOverlay onClick={handleModalClick} className='modal-overlay'>
+    <ModalOverlay  onClick={handleModalClick} className='modal-overlay'>
       <Modal >
         <ModalClose onClick={onClose} className='modal-close'>
           <X size={24} />

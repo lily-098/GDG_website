@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // CORS Configuration
-const allowedOrigins = ["https://gdg-website-2025-delta.vercel.app"];
+const allowedOrigins = ["https://gdg-website-2025-delta.vercel.app","http://localhost:5173"];
 app.use(
   cors({
     origin: (origin, callback) => {
