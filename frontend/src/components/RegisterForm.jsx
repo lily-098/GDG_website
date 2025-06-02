@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import '../styles/RegisterModal.css';
 import styled from 'styled-components';
-
+import axios from 'axios';
 
 const ModalOverlay=styled.div`
   position: fixed;
@@ -122,7 +122,8 @@ const RegisterModal = ( {event, onClose} ) => {
     college: '',
     year: '',
     branch: '',
-    reason: ''
+    reason: '',
+    eventId: event?.id || '', // Assuming event has an _id field
   });
   console.log("ye h event",event)
   const [errors, setErrors] = useState({});
@@ -194,35 +195,23 @@ const RegisterModal = ( {event, onClose} ) => {
     }
   };
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-
+ const handleSubmit = async () => {
   if (validateStep(step)) {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://gdg-website-2025-oghz.vercel.app/api/auth/registerforevent', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          eventId: event?.id,
-          ...formData
-        }),
-      });
-
+      console.log("hi")
+      const response = await axios.post(`https://gdg-website-2025-oghz.vercel.app/api/auth/enquiry/registerforevent`, formData);
+      console.log("Response from server:", response.data);
       if (!response.ok) {
         throw new Error('Failed to register');
       }
-
-      const data = await response.json(); 
       setSubmitted(true);
     } catch (error) {
       console.error('Registration error:', error);
       alert('An error occurred during registration. Please try again.');
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting()
     }
   }
 };
@@ -230,13 +219,6 @@ const RegisterModal = ( {event, onClose} ) => {
     // Only close if clicking the overlay, not the modal content
     if (e.target.classList.contains('modal-overlay')) {
       onClose();
-
-
-
-
-
-
-
     }
   };
 

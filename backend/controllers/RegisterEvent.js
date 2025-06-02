@@ -19,7 +19,7 @@ const registerForEvent = async (req, res) => {
       return res.status(400).json({ message: 'You have already registered for this event.' });
     }
 
-    const registration = new Registration({
+    const registration = await  Registration.create({
       fullName,
       email,
       phone,
@@ -29,9 +29,6 @@ const registerForEvent = async (req, res) => {
       reason,
       eventId
     });
-
-    await registration.save();
-
     res.status(201).json({ message: 'Registration successful', registration });
   } catch (error) {
     console.error('Registration error:', error.message);

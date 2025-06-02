@@ -141,7 +141,7 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://gdg-website-2025-oghz.vercel.app/api/auth/contact', {
+      const response = await fetch('https://gdg-website-2025-oghz.vercel.app/api/auth/enquiry/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
