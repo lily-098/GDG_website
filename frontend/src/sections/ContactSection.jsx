@@ -7,11 +7,13 @@ import styled from 'styled-components';
 const Contact=styled.div`
     background-color:${({theme})=>theme.colors.background.secondary};
   padding: var(--spacing-xxl) 0;
+
 `
 const Container=styled.div`
   width: fit-content;
   margin: 0 auto var(--spacing-xxl);
   color: ${({theme})=>theme.colors.text.secondary};
+
   font-size: var(--font-size-lg);
   h2{
     text-align: center;
@@ -29,6 +31,12 @@ const ContactGrid=styled.div`
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: var(--spacing-xl);
+  @media (max-width: 768px) {
+    padding:0.5rem;
+    display: flex;
+    flex-direction: column;
+    
+  }
   `
   
 const Info=styled.div`
@@ -46,14 +54,14 @@ const Info=styled.div`
   }
 `
 const ContactContainer=styled.div`
-  background-color: ${({theme})=>theme.colors.background.secondary};
-  
+  background-color: ${({theme})=>theme.colors.background.primary};
   h3{
     color:${({theme})=>theme.colors.text.primary};
   }
+
   `
 const ContactForm=styled.form`
-
+  background-color: ${({theme})=>theme.colors.background.primary};
   label{
     display: block;
   margin-bottom: var(--spacing-xs);
@@ -62,13 +70,17 @@ const ContactForm=styled.form`
   font-weight: 500;
   }
   input,textarea,select{
-     width: 100%;
+  width: 100%;
   padding: var(--spacing-md);
-  border: 1px solid transparent;
+  border:${({theme})=>theme.googleColors.borders};
   border-radius: var(--radius-md);
-  background-color:${({theme})=>theme.colors.background.primary};
+  background-color:${({theme})=>theme.colors.background.secondary};
   color:${({theme})=>theme.colors.text.secondary} ;
   transition: border-color var(--transition-short), box-shadow var(--transition-short);
+  }input:focus,textarea:focus{
+      outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.1);
   }
   textarea:focus,input:focus{
     outline: none;
@@ -141,7 +153,7 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://gdg-website-2025-oghz.vercel.app/api/auth/enquiry/contact', {
+      const response = await fetch('https://gdg-website-2025-oghz.vercel.app/api/auth/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -183,7 +195,7 @@ const ContactSection = () => {
         </p>
         
         <ContactGrid>
-          <Info className='contact-info'>
+          <Info className="contact-info">
             <h3>Contact Information</h3>
             
             <div className="contact-method">
@@ -237,7 +249,7 @@ const ContactSection = () => {
             )}
             
             <ContactForm onSubmit={handleSubmit} className='contact-form'>
-              <div className="form-group">
+              <div>
                 <label htmlFor="name">Your Name</label>
                 <input
                   type="text"
@@ -251,7 +263,7 @@ const ContactSection = () => {
                 {errors.name && <span className="error-message">{errors.name}</span>}
               </div>
               
-              <div className="form-group">
+              <div>
                 <label htmlFor="email">Your Email</label>
                 <input
                   type="email"
@@ -265,7 +277,7 @@ const ContactSection = () => {
                 {errors.email && <span className="error-message">{errors.email}</span>}
               </div>
               
-              <div className="form-group">
+              <div >
                 <label htmlFor="subject">Subject</label>
                 <input
                   type="text"
@@ -279,7 +291,7 @@ const ContactSection = () => {
                 {errors.subject && <span className="error-message">{errors.subject}</span>}
               </div>
               
-              <div className="form-group">
+              <div>
                 <label htmlFor="message">Your Message</label>
                 <textarea
                   id="message"

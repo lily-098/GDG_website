@@ -119,7 +119,28 @@ const NavActions = styled.div`
 }
   
 `;  
-
+const Button=styled.button`
+height: 2.5rem;
+  width: 7rem;
+  background-color: ${({ theme }) => theme.googleColors.blue.darker};
+  color: ${({ theme }) => theme.colors.text.primary};
+  border: none;
+  border-radius: ${({ theme }) => theme.colors.borderRadius.medium};
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  
+  &:hover {
+    background-color: ${({ theme }) => theme.googleColors.blue.dark};
+    transform: scale(1.05);
+  }
+font-size: 1rem;
+  font-weight: 600;
+  @media (max-width: 768px) {
+    width: 100%; /* Full width on small screens */
+    text-align: center; /* Center text on small screens */
+  }
+`
 const Header = () => {
   const {isAuthenticated}=useAuth()
   const [scrolled, setScrolled] = useState(false);
@@ -157,7 +178,7 @@ const Header = () => {
 
       <Nav $isOpen={menuOpen}>
         <NavLink href="/" onClick={closeMenu}>Home</NavLink>
-        <NavLink href="/#events" onClick={closeMenu}>Events</NavLink>
+        <NavLink href="/events" onClick={closeMenu}>Events</NavLink>
         <NavLink href="/team" onClick={closeMenu}>Team</NavLink>
         <NavLink href="/#sponsor" onClick={closeMenu}>Resources</NavLink>
         <NavLink href="/#contact" onClick={closeMenu}>Contact</NavLink>
@@ -165,7 +186,7 @@ const Header = () => {
 
       <NavActions>
         {!isAuthenticated && <Link to="/auth"   >
-          <button className="btn btn-primary" >SignIn/SignUp</button>
+          <Button  >SignIn/SignUp</Button>
           </Link>}
           {isAuthenticated && <ProfileButton />}
         <ThemeToggle toggle={toggleTheme} />

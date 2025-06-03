@@ -1,11 +1,9 @@
 import axios from "axios";
 import { createContext, useEffect, useReducer } from "react";
-
 const Authcontext = createContext();
-
 const getToken = () => localStorage.getItem("token");
 const getFileUrl = () => JSON.parse(localStorage.getItem("fileUrl")) || [];
-
+const getActiveEvent = () => JSON.parse(localStorage.getItem("activeEvent")) || {};
 const initialState = {
   user: null,
   isAuthenticated: !!getToken(),
@@ -13,6 +11,7 @@ const initialState = {
   error: null,
   value: "",
   fileUrl: getFileUrl(),
+  activeEvent:getActiveEvent(),
 };
 
 function reducer(state, action) {
@@ -33,8 +32,8 @@ function reducer(state, action) {
         loading: false,
         error: null,
       };
-    case "search":
-      return { ...state, value: action.payload };
+    case "activeEvent":
+      return { ...state, activeEvent: action.payload }; 
     case "fileUrlvalue":
       return { ...state, fileUrl: action.payload };
     default:
@@ -45,7 +44,7 @@ function reducer(state, action) {
 export default function AuthProvider({ children }) {
   const API_BASE_URL = "https://gdg-website-2025-oghz.vercel.app/";
 
-  const [{ user, isAuthenticated, loading, error, value, fileUrl }, dispatch] =
+  const [{ user, isAuthenticated, loading, error, value, fileUrl,activeEvent }, dispatch] =
     useReducer(reducer, initialState);
 
   const fetchUserProfile = async () => {
@@ -78,14 +77,15 @@ export default function AuthProvider({ children }) {
 
   useEffect(() => {
     localStorage.setItem("fileUrl", JSON.stringify(fileUrl));
-  }, [fileUrl]);
+    localStorage.setItem("activeEvent", JSON.stringify(activeEvent));
+  }, [fileUrl,activeEvent]);
 
   const login = () => dispatch({ type: "login" });
   const logout = () => {
     localStorage.removeItem("token");
     dispatch({ type: "logout" });
   };
-  const search = (value) => dispatch({ type: "search", payload: value });
+  const onEvent = (value) => dispatch({ type: "activeEvent", payload: value });
 
   // FIXED: Append the new URL string correctly to the array
   const url = (newUrl) => {
@@ -96,15 +96,15 @@ export default function AuthProvider({ children }) {
     <Authcontext.Provider
       value={{
         user,
-        isAuthenticated,
-        loading,
-        error,
-        value,
-        login,
-        logout,
-        search,
-        url,
-        fileUrl,
+    isAuthenticated,
+    loading,
+    error,
+    login,
+    logout,
+    onEvent,
+    url,
+    fileUrl,
+    activeEvent,
       }}
     >
       {children}

@@ -53,7 +53,6 @@ const HomePage = () => {
   }, []);
   return (
     <HomePageContainer ref={containerRef}>
-      <ParticlesBackground />
       <motion.div style={{ opacity }}>
         <HeroSection />
       </motion.div>

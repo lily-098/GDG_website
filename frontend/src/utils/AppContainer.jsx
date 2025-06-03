@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import styled from 'styled-components'
 import Space from '../components/Space'
 import { Outlet } from 'react-router-dom'
+import BackgroundParticles from '../components/BackgroundParticles'
 
 const Container=styled.div`
     display: flex;
@@ -17,6 +18,7 @@ flex: 1;
 export default function AppContainer() {
   return (
           <Container>
+            <BackgroundParticles />
             <Header />
             <Main>
               <Outlet />

@@ -1,199 +1,187 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { motion } from "framer-motion";
-import { gsap } from "gsap";
+import React, { useState, useEffect } from 'react';
 
-const Container = styled.div`
-  margin: 4rem auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-  border-radius: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-`;
-
-const EventCard = styled(motion.div)`
-  background: linear-gradient(145deg, #ffffff, #f1f1f1);
-  border: 2px solid #90caf9;
-  backdrop-filter: blur(12px);
-  border-radius: 1.5rem;
-  padding: 2.5rem;
-  width: 90%;
-  max-width: 900px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.02);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-  }
-`;
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  align-items: center;
-
+import { motion } from 'framer-motion';
+import { fetchEvents } from '../utils/eventService';
+import NextEventCountdown from '../components/events/NextEventCountdown';
+import EventFilters from '../components/events/EventFilters';
+import EventsList from '../components/events/EventsList';
+import styled from 'styled-components';
+import '../styles/Hero.css';
+import BackgroundParticles from '../components/BackgroundParticles';
+import RegisterModal from '../components/RegisterForm';
+import { useAuth } from '../contexts/useAuth';
+const Section=styled.section`
+margin-top: 4rem;
+position: relative;
+overflow: hidden;
+`
+const Container=styled.div`
+padding: 2rem 1rem 1rem 1rem;
+h2{
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+color: ${({theme})=>theme.colors.text.primary};
   @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr;
+    font-size: 3rem; 
   }
-`;
-
-const Title = styled(motion.h3)`
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #1976d2;
-`;
-
-const Subtitle = styled(motion.p)`
-  font-size: 1.25rem;
-  margin-bottom: 1.5rem;
-  color: #455a64;
-`;
-
-const Countdown = styled.div`
-  font-size: 2rem;
-  font-weight: bold;
-  margin-top: 1rem;
-  color: #1e88e5;
-  display: flex;
-  gap: 0.5rem;
-
-  span {
-    background: #e3f2fd;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.div1{
+   width: 5rem; 
+  height: 0.25rem;
+  background-color: ${({ theme }) => theme.colors.primary.blue}; 
+  margin: 1rem auto; 
+  p{
+    font-size: 1.125rem; /* Equivalent to text-lg */
+  color: ${({ theme }) => theme.colors.text.secondary}; /* Equivalent to text-gray-700 */
+  max-width: 42rem; /* Equivalent to max-w-2xl */
+  margin: 0 auto; /* Equivalent to mx-auto */
+  
+  /* Dark mode styles */
+  ${({ theme }) => theme.name==="dark" && `
+    color: ${theme.colors.text.tertiary}; /* Equivalent to dark:text-gray-300 */
+  `}
   }
-`;
+}
+.div2{
+  padding-left:8rem;
+  padding-right:8rem;
+   display: grid;
+  grid-template-columns: 1fr; /* Equivalent to grid-cols-1 */
+  gap: 2rem; /* Equivalent to gap-8 */
+  margin-top: 3rem; /* Equivalent to mt-12 */
 
-const ImageWrapper = styled(motion.div)`
-  height: 20rem;
-  border-radius: 1.5rem;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  @media (min-width: 1024px) {
+    /* Equivalent to lg:grid-cols-3 */
+    grid-template-columns: repeat(3, 1fr);
   }
-`;
+  div{
+    @media (min-width: 1024px) {
+    /* Equivalent to lg:col-span-1 */
+    grid-column: span 1 / span 1;
+  }
+  }
+}
 
-const GlowEffect = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle, rgba(66, 133, 244, 0.3) 10%, transparent 80%);
-  border-radius: 1.5rem;
-  z-index: -1;
-`;
- const upcomingEvents = [
-    {
-      title: "Google I/O Extended MMMUT 2025",
-      date: "May 15, 2025",
-      time: "10:00 AM - 5:00 PM",
-      location: "Central Auditorium, MMMUT Campus",
-      description: "Join us for Google I/O Extended, where we'll stream the keynotes and sessions from Google I/O and host local workshops focused on the latest Google technologies.",
-      image: "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      upcoming: true
+
+
+`
+export default function Events(){
+  const {activeEvent}=useAuth()
+const [events, setEvents] = useState([]);
+const [filteredEvents, setFilteredEvents] = useState([]);
+const [activeFilter, setActiveFilter] = useState('upcoming');
+const [isLoading, setIsLoading] = useState(true);
+const [close,setclose]=useState(true);
+const [currentevent, setCurrentEvent] = useState(activeEvent);
+  useEffect(() => {
+    const getEvents = async () => {
+      setIsLoading(true);
+      try {
+        const data = await fetchEvents();
+        setEvents(data);
+        setFilteredEvents(data.filter(event => event.status === 'upcoming'));
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getEvents();
+  }, []);
+  useEffect(()=>{
+    setCurrentEvent(activeEvent);
+  },[activeEvent]);
+  function handleClose(){
+        setclose(true);
     }
-  ];
-const NextEventCountdown = () => {
-  const calculateTimeLeft = () => {
-    const eventDate = new Date("2025-06-01T00:00:00"); // Example date
-    const currentTime = new Date();
-    const difference = eventDate - currentTime;
-
-    let timeLeft = {};
-
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-
-    return timeLeft;
+  const handleFilterChange = (filter) => {
+    setActiveFilter(filter);
+    setFilteredEvents(events.filter(event => event.status === filter));
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const getNextEvent = () => {
+    const upcomingEvents = events.filter(event => event.status === 'upcoming');
+    if (upcomingEvents.length === 0) return null;
+    
+    // Sort by date and get the closest one
+    return upcomingEvents.sort((a, b) => 
+      new Date(a.date).getTime() - new Date(b.date).getTime()
+    )[0];
+  };
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    gsap.from("img", { opacity: 0, duration: 1, scale: 0.9 });
-  }, []);
-
+  const nextEvent = getNextEvent();
   return (
-    <Container>
-      <EventCard
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <GlowEffect />
-        <Grid>
-          <div>
-            <Title
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              Next Event Countdown
-            </Title>
-            <Subtitle
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              {upcomingEvents[0].title}
-            </Subtitle>
-            <Countdown>
-              {Object.keys(timeLeft).length > 0 ? (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1 }}
-                >
-                  <span>{timeLeft.days}d</span>
-                  <span>{timeLeft.hours}h</span>
-                  <span>{timeLeft.minutes}m</span>
-                  <span>{timeLeft.seconds}s</span>
-                </motion.div>
-              ) : (
-                <div>Event has started!</div>
-              )}
-            </Countdown>
-          </div>
-          <ImageWrapper
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
+    <>
+    <BackgroundParticles />
+    <Section id="events">
+      <Container className="container-custom">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: 'center', marginBottom: '2rem' }}
+        >
+          <h2 >
+            Upcoming &amp; Past Events
+          </h2>
+          <div className="div1"></div>
+          <p >
+            Join us at our events to learn, network, and grow with the Google Developer community at MMMUT.
+          </p>
+        </motion.div>
+
+        <div className="div2">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <img
-              src={upcomingEvents[0].image}
-              alt={upcomingEvents[0].title}
+            <div style={{position:"sticky",top:"6rem"}}>
+              {nextEvent && (
+                <NextEventCountdown event={nextEvent} setclose={setclose} />
+              )}
+
+              <motion.div  initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            style={{marginTop:"6rem",marginLeft:"4rem", height:"10rem", width:"10rem"}}>
+                <div className="hero-image,">
+               <div className="rotating-cube">
+                 <div className="cube-face front">G</div>
+                 <div className="cube-face back">G</div>
+                 <div className="cube-face right">D</div>
+                 <div className="cube-face left">I/O</div>
+                 <div className="cube-face top">DEV</div>
+                 <div className="cube-face bottom">TECH</div>
+               </div>
+              </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            style={{gridColumn: "span 2 / span 2" }}
+          >
+            <EventFilters
+              activeFilter={activeFilter} 
+              onFilterChange={handleFilterChange} 
             />
-          </ImageWrapper>
-        </Grid>
-      </EventCard>
-    </Container>
+            
+            <EventsList
+              events={filteredEvents} 
+              isLoading={isLoading} 
+              setclose={setclose}
+            />
+          </motion.div>
+        </div>
+      </Container>
+    </Section>
+    {!close && <RegisterModal event={currentevent} onClose={handleClose} />}
+    </>
   );
 };
-
-export default NextEventCountdown;

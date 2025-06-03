@@ -14,7 +14,6 @@ const AuthProvider =lazy(()=>import('./contexts/AuthContext'));
 const AuthCallback =lazy(()=>import('./pages/AuthCallback'));
 const About =lazy(()=>import('./pages/About'));
 const FollowCursor =lazy(()=>import('./components/FollowCursor'));
-
 function App() {
   const { theme } = useTheme();
 

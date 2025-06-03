@@ -1,22 +1,97 @@
 "use client"
 import { motion } from "framer-motion"
+import styled, { keyframes } from "styled-components"
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f9fafb; /* gray-50 */
+  position: relative;
+`
+
+const PulsingCircle = styled(motion.div)`
+  position: absolute;
+  width: 8rem;   /* 32 */
+  height: 8rem;
+  background-color: #bfdbfe; /* blue-100 */
+  border-radius: 9999px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`
+
+const DotsContainer = styled(motion.div)`
+  display: flex;
+  gap: 0.75rem; /* space-x-3 */
+  position: relative;
+  z-index: 10;
+`
+
+const Dot = styled(motion.div)`
+  width: 1rem;   /* 4 */
+  height: 1rem;
+  border-radius: 9999px;
+  background-color: ${({ color }) => color};
+`
+
+const TextContainer = styled(motion.div)`
+  margin-top: 2rem;
+  text-align: center;
+`
+
+const Heading = styled.h2`
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700;
+  color: #1f2937; /* gray-800 */
+  margin-bottom: 0.5rem;
+`
+
+const Paragraph = styled(motion.p)`
+  color: #4b5563; /* gray-600 */
+`
+
+const ProgressWrapper = styled(motion.div)`
+  margin-top: 1.5rem;
+  width: 12rem; /* 48 */
+  height: 0.25rem; /* 1 */
+  background-color: #e5e7eb; /* gray-200 */
+  border-radius: 9999px;
+  overflow: hidden;
+`
+
+const ProgressBar = styled(motion.div)`
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #3b82f6,  /* blue-500 */
+    #ef4444,  /* red-500 */
+    #facc15,  /* yellow-500 */
+    #22c55e   /* green-500 */
+  );
+`
+
 export default function Spinner() {
   const colors = [
-    "bg-blue-500", // Google Blue
-    "bg-red-500", // Google Red
-    "bg-yellow-500", // Google Yellow
-    "bg-green-500", // Google Green
+    "#3b82f6", // blue-500
+    "#ef4444", // red-500
+    "#facc15", // yellow-500
+    "#22c55e", // green-500
   ]
- const containerVariants = {
-  animate: {
-    transition: {
-      staggerChildren: 0.2,
-      repeat: Infinity,
-      repeatType: "loop",
-      duration: 2,
+
+  const containerVariants = {
+    animate: {
+      transition: {
+        staggerChildren: 0.2,
+        repeat: Infinity,
+        repeatType: "loop",
+        duration: 2,
+      },
     },
-  },
-};
+  }
+
   const dotVariants = {
     initial: {
       y: 0,
@@ -27,7 +102,7 @@ export default function Spinner() {
       scale: [1, 1.2, 1],
       transition: {
         duration: 1.2,
-        repeat: Number.POSITIVE_INFINITY,
+        repeat: Infinity,
         ease: "easeInOut",
       },
     },
@@ -39,71 +114,59 @@ export default function Spinner() {
       opacity: [0.7, 0.3, 0.7],
       transition: {
         duration: 2,
-        repeat: Number.POSITIVE_INFINITY,
+        repeat: Infinity,
         ease: "easeInOut",
       },
     },
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-      <div className="relative">
-        {/* Pulsing background circle */}
-        <motion.div
-          className="absolute inset-0 w-32 h-32 bg-blue-100 rounded-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-          variants={pulseVariants}
-          animate="animate"
-        />
+    <Container>
+      <PulsingCircle
+        variants={pulseVariants}
+        animate="animate"
+      />
+      <DotsContainer variants={containerVariants} animate="animate">
+        {colors.map((color, index) => (
+          <Dot
+            key={index}
+            color={color}
+            variants={dotVariants}
+            initial="initial"
+            animate="animate"
+          />
+        ))}
+      </DotsContainer>
 
-        {/* Main loader container */}
-        <motion.div className="flex space-x-3 relative z-10" variants={containerVariants} animate="animate">
-          {colors.map((color, index) => (
-            <motion.div
-              key={index}
-              className={`w-4 h-4 rounded-full ${color}`}
-              variants={dotVariants}
-              initial="initial"
-              animate="animate"
-            />
-          ))}
-        </motion.div>
-      </div>
-
-      {/* GDG Text */}
-      <motion.div
-        className="mt-8 text-center"
+      <TextContainer
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
       >
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">Google Developer Groups</h2>
-        <motion.p
-          className="text-gray-600"
+        <Heading>Google Developer Groups</Heading>
+        <Paragraph
           animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+          transition={{ duration: 2, repeat: Infinity }}
         >
           Loading amazing content...
-        </motion.p>
-      </motion.div>
+        </Paragraph>
+      </TextContainer>
 
-      {/* Progress indicator */}
-      <motion.div
-        className="mt-6 w-48 h-1 bg-gray-200 rounded-full overflow-hidden"
+      <ProgressWrapper
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
       >
-        <motion.div
-          className="h-full bg-gradient-to-r from-blue-500 via-red-500 via-yellow-500 to-green-500"
+        <ProgressBar
           initial={{ x: "-100%" }}
           animate={{ x: "100%" }}
           transition={{
             duration: 2,
-            repeat: Number.POSITIVE_INFINITY,
+            repeat: Infinity,
             ease: "easeInOut",
           }}
         />
-      </motion.div>
-    </div>
+      </ProgressWrapper>
+    </Container>
   )
 }
