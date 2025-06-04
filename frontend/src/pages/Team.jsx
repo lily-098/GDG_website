@@ -1005,7 +1005,7 @@ const teamData =[
   {
     "id": 69,
     "name": "Bhaskar Trivedi",
-    "role": "Media and CP Executive",
+    "role": "GDG Lead 2022",
     "badge": "Event Coordinator",
     "year": "2021",
     "image": "",
