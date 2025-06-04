@@ -203,7 +203,7 @@ const Footer = () => {
           <FooterLink href="mailto:gdg@mmmut.ac.in">gdg@mmmut.ac.in</FooterLink>
           <FooterLink href="#">MMMUT, Gorakhpur</FooterLink>
           <FooterLink href="#">Uttar Pradesh, India</FooterLink>
-          <FooterLink href="tel:+910000000000">+91 00000 00000</FooterLink>
+          <FooterLink href="tel:+910000000000">+91 8874985341</FooterLink>
         </FooterSection>
       </FooterContent>
       

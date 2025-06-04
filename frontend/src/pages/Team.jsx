@@ -519,7 +519,7 @@ const teamData =[
   },
   {
     "id": 29,
-    "name": "Aditya Kumar Kasaduhan",
+    "name": "Aditya Kumar Kasaudhan",
     "role": "Android Team",
     "badge": "Android Developer",
     "year": "2023",
@@ -543,7 +543,7 @@ const teamData =[
   },
   {
     "id": 31,
-    "name": "Sunil Kaushal",
+    "name": "Suraj Kasaudhan",
     "role": "Android Team",
     "badge": "Android Developer",
     "year": "2023",
@@ -591,7 +591,7 @@ const teamData =[
   },
   {
     "id": 35,
-    "name": "Tanya Baltham",
+    "name": "Tanya Batham",
     "role": "Content Team",
     "badge": "Content Creator",
     "year": "2023",
@@ -700,7 +700,7 @@ const teamData =[
   },
   {
     "id": 44,
-    "name": "Madhav Trivedi",
+    "name": "Madhur Vatsal Bharti",
     "role": "Web & Firebase Team",
     "badge": "Web Developer",
     "year": "2022",
@@ -724,7 +724,7 @@ const teamData =[
   },
   {
     "id": 46,
-    "name": "Sonali Ravi",
+    "name": "Sonali Rao",
     "role": "Web & Firebase Team",
     "badge": "Web Developer",
     "year": "2022",
@@ -760,7 +760,7 @@ const teamData =[
   },
   {
     "id": 49,
-    "name": "Selvik Tripathi",
+    "name": "Satvik Tripathi",
     "role": "AI/ML & Cybersecurity Team",
     "badge": "AI/ML Enthusiast",
     "year": "2022",
@@ -820,7 +820,7 @@ const teamData =[
   },
   {
     "id": 54,
-    "name": "Anul Kumar",
+    "name": "Atul Kumar",
     "role": "Graphics & Creativity Team",
     "badge": "Designer",
     "year": "2022",
@@ -928,7 +928,7 @@ const teamData =[
   },
   {
     "id": 63,
-    "name": "Arpita Gupta",
+    "name": "Anjali Gupta",
     "role": "Event Coordination Team",
     "badge": "Event Coordinator",
     "year": "2022",
@@ -944,6 +944,201 @@ const teamData =[
     "role": "Event Coordination Team",
     "badge": "Event Coordinator",
     "year": "2022",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+   {
+    "id": 65,
+    "name": "Abhay Nandan Singh",
+    "role": "Media and CP Executive",
+    "badge": "Media Coordinator",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 66,
+    "name": "Archana Chaurasiya",
+    "role": "Media and CP Executive",
+    "badge": "Content Creator",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 67,
+    "name": "Aradhya Srivastav",
+    "role": "Media and CP Executive",
+    "badge": "Public Relations",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 68,
+    "name": "Anubhav Aggrawal",
+    "role": "Media and CP Executive",
+    "badge": "Social Media Manager",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 69,
+    "name": "Bhaskar Trivedi",
+    "role": "Media and CP Executive",
+    "badge": "Event Coordinator",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 70,
+    "name": "Aman Kumar Poddar",
+    "role": "Web, App, and Project Development Executive",
+    "badge": "Developer",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 71,
+    "name": "Ikchhit Kumar",
+    "role": "Web, App, and Project Development Executive",
+    "badge": "Frontend Developer",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 72,
+    "name": "Aditya Dixit",
+    "role": "Web, App, and Project Development Executive",
+    "badge": "Backend Developer",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 73,
+    "name": "Kumari Astha Rani",
+    "role": "Web, App, and Project Development Executive",
+    "badge": "Full Stack Developer",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 74,
+    "name": "Sanjay Chaurasiya",
+    "role": "Web, App, and Project Development Executive",
+    "badge": "Mobile Developer",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 75,
+    "name": "Shivam Pandey",
+    "role": "Partnership and Outreach Executive",
+    "badge": "Outreach Coordinator",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 76,
+    "name": "Aryan Singh",
+    "role": "Partnership and Outreach Executive",
+    "badge": "Partnership Manager",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 77,
+    "name": "Prehans Gupta",
+    "role": "Partnership and Outreach Executive",
+    "badge": "Sponsor Manager",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 78,
+    "name": "Riva Diwan",
+    "role": "Partnership and Outreach Executive",
+    "badge": "Networking Coordinator",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+  {
+    "id": 79,
+    "name": "Khushi Singh",
+    "role": "Partnership and Outreach Executive",
+    "badge": "Marketing Lead",
+    "year": "2021",
+    "image": "",
     "social": {
       "linkedin": "",
       "twitter": "",
@@ -1019,6 +1214,12 @@ console.log("fileUrll",fileUrl)
           onClick={() => setSelectedYear('2022')}
         >
           2022
+        </FilterButton>
+        <FilterButton 
+          active={selectedYear === '2021'} 
+          onClick={() => setSelectedYear('2021')}
+        >
+          2021
         </FilterButton>
         </FilterContainer>
         <motion.div

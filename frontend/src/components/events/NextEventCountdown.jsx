@@ -11,7 +11,8 @@ const Countdown=styled(motion.div)`
   border-radius: 1rem; /* Equivalent to rounded-2xl */
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Equivalent to shadow-lg */
   overflow: hidden;
-
+  padding-left: 2rem;
+  padding-right: 4rem;
   ${({ theme }) =>
     theme.isDark &&
     `
