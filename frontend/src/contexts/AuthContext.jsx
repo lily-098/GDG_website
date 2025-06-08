@@ -4,6 +4,7 @@ const Authcontext = createContext();
 const getToken = () => localStorage.getItem("token");
 const getFileUrl = () => JSON.parse(localStorage.getItem("fileUrl")) || [];
 const getActiveEvent = () => JSON.parse(localStorage.getItem("activeEvent")) || {};
+
 const initialState = {
   user: null,
   isAuthenticated: !!getToken(),
