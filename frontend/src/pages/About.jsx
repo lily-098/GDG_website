@@ -4,10 +4,8 @@ import styled from 'styled-components';
 import '../styles/About.css';
 
 const Aboutid = styled.section`
-  background-color: ${({ theme }) => theme.colors.background.primary};
   color: ${({ theme }) => theme.colors.text.primary};
   padding: 80px 20px;
-
   @media (max-width: 768px) {
     padding: 80px 15px;
   }
@@ -31,7 +29,7 @@ const FeaturesGrid = styled.div`
   margin-bottom: 4rem;
 
   .feature-card {
-    background-color: ${({ theme }) => theme.colors.background.secondary};
+    background-color: ${({ theme }) => theme.colors.background.secondary};\
     border-radius: 1rem;
     padding: 2rem;
     box-shadow: 0 4px 20px ${({ theme }) => theme.colors.shadow};
@@ -85,7 +83,7 @@ const FeaturesGrid = styled.div`
     font-size: 1rem;
     line-height: 1.5;
   }
-`;
+`
 
 const AboutStats = styled.div`
   display: grid;

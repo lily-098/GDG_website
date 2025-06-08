@@ -61,9 +61,14 @@ color: ${({theme})=>theme.colors.text.primary};
     grid-column: span 1 / span 1;
   }
   }
+  @media (max-width: 768px) {
+    padding-left: 3rem; /* Equivalent to pl-8 */
+  }
+  @media(max-width: 320px) {
+    padding-left: 0rem; /* Equivalent to pl-4 */
 }
 
-
+}
 
 `
 export default function Events(){
