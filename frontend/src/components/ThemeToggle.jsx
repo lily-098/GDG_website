@@ -9,8 +9,9 @@ const ToggleButton = styled(motion.button)`
   align-items: center;
   justify-content: center;
 
-  height: 3rem;
-  border-radius: 100%;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.text.primary};
   background-color: ${({ theme }) => theme.colors.background.secondary};

@@ -72,7 +72,7 @@ const Label=styled.div`
     color: ${theme.colors.text.tertiary || '#9ca3af'}; /* dark:text-gray-400 */
   `}
 `
-const NextEventCountdown= ({ event,setclose }) => {
+const NextEventCountdown= ({ event,setClose }) => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const {onEvent}=useAuth()
   useEffect(() => {
@@ -99,7 +99,7 @@ const NextEventCountdown= ({ event,setclose }) => {
 
   function handleClick(){
     onEvent(event);
-    setclose(false)
+    setClose(false)
   }
 
   return (
