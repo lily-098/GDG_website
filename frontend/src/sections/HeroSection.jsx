@@ -18,10 +18,7 @@ const HeroSection = () => {
             <h1>Google Developer Group</h1>
             <h2>MMMUT Chapter</h2>
             <p>Connect. Learn. Grow. Join our tech community and be a part of something extraordinary.</p>
-            <div className="hero-buttons">
-              <a href="#events" className="btn btn-primary">Upcoming Events</a>
-              <a href="#about" className="btn btn-outline">Learn More</a>
-            </div>
+            
           </div>
           
           <div className="hero-image">
