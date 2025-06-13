@@ -8,9 +8,8 @@ const ToggleButton = styled(motion.button)`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  height: 4rem;
   width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.text.primary};
@@ -18,6 +17,10 @@ const ToggleButton = styled(motion.button)`
   
   &:hover {
     background-color: ${({ theme }) => theme.colors.background.tertiary};
+    @media (max-width:768px) {
+      height: 2rem;
+      width: 2rem;
+    }
   }
 `;
 
@@ -34,7 +37,7 @@ const ThemeToggle = () => {
       transition={{ duration: 0.5 }}
       aria-label={isDarkTheme ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      {isDarkTheme ? <FaSun size={18} /> : <Moon size={18} />}
+      {isDarkTheme ? <FaSun size={13} /> : <Moon size={13} />}
     </ToggleButton>
   );
 };

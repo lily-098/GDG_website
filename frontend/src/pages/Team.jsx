@@ -1148,9 +1148,9 @@ const teamData =[
    {
     "id": 80,
     "name": "Abhinash Kumar yadav",
-    "role": "GDG Lead",
+    "role": "GDG Lead 2021",
     "badge": "",
-    "year": "2021",
+    "year": "2020",
     "image": "",
     "social": {
       "linkedin": "",
@@ -1161,9 +1161,9 @@ const teamData =[
      {
     "id": 81,
     "name": "Abhishek Kumar yadav",
-    "role": "GDG Lead",
+    "role": "GDG Lead 2020",
     "badge": "",
-    "year": "2020",
+    "year": "2019",
     "image": "",
     "social": {
       "linkedin": "",

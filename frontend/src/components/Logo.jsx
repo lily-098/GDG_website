@@ -2,6 +2,7 @@ import React from 'react'
 import "../styles/Logo.css"
 import styled from 'styled-components'
 const Symbol =styled.a`
+width: fit-content;
   display: flex;
    align-items: center;
   font-family: 'Google Sans', sans-serif;
@@ -9,6 +10,9 @@ const Symbol =styled.a`
   font-weight: 700;
   gap: 0.4rem;
   color: ${({theme})=>theme.colors.text.primary};
+  @media (max-width:768px){
+    font-size: 1rem;
+  }
 `
 export default function Logo() {
   return (
