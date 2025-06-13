@@ -1144,6 +1144,32 @@ const teamData =[
       "twitter": "",
       "github": ""
     }
+  },
+   {
+    "id": 80,
+    "name": "Abhinash Kumar yadav",
+    "role": "GDG Lead",
+    "badge": "",
+    "year": "2021",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
+  },
+     {
+    "id": 81,
+    "name": "Abhishek Kumar yadav",
+    "role": "GDG Lead",
+    "badge": "",
+    "year": "2020",
+    "image": "",
+    "social": {
+      "linkedin": "",
+      "twitter": "",
+      "github": ""
+    }
   }
 ]
 ;
