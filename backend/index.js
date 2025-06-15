@@ -52,13 +52,11 @@ cloudinary.cloudinaryConnect();
 // Routes
 const uploadRoutes = require("./routes/FileUpload"); // File upload routes
 const authRoutes = require("./routes/userRoute"); // User authentication routes
-const oauthRoutes = require("./routes/authRoutes"); // OAuth routes (Google, GitHub, Twitter)
 const enquiryRoutes = require("./routes/registerRoute"); // Event registration routes
 
 // API route mounting
 app.use("/api/auth", authRoutes);          // Standard auth routes
 app.use("/api/auth/upload", uploadRoutes); // File upload routes
-app.use("/api/auth/oauth", oauthRoutes);   // OAuth routes
 app.use('/api/auth/enquiry',enquiryRoutes);
 
 // Root endpoint

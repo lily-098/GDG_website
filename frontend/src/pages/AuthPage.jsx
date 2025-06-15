@@ -126,7 +126,7 @@ const AuthPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 const handleOAuthLogin = (provider) => {
-  window.location.href = `https://gdg-website-2025-oghz.vercel.app/api/auth/oauth/${provider}`;
+  window.location.href = `https://gdg-website-2025-oghz.vercel.app/api/auth/${provider}`;
 };
   const handleSubmit = async (e) => {
     e.preventDefault();
