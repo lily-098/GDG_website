@@ -23,9 +23,11 @@ const userSchema = new mongoose.Schema(
     profilePhoto:{
       type:String,
     },
-    googleId: String,
-    githubId: String,
-    twitterId: String,
+    oauth: {
+    google: { id: String },
+    github: { id: String },
+    twitter: { id: String }
+  }
   },
   {
     timestamps: true, // Automatically creates `createdAt` and `updatedAt` fields
