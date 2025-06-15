@@ -288,15 +288,15 @@ const handleOAuthLogin = (provider) => {
             <SocialButtonsContainer>
               <SocialButton type="button">
                 <GoogleIcon />
-                <span onClick={()=>handleOAuthLogin("google")}>Google</span>
+                <span onClick={handleOAuthLogin("google")}>Google</span>
               </SocialButton>
               <SocialButton type="button">
                 <GitHub size={18} />
-                <span onClick={()=>handleOAuthLogin("github")}>GitHub</span>
+                <span onClick={handleOAuthLogin("github")}>GitHub</span>
               </SocialButton>
               <SocialButton type="button">
                 <Twitter size={18} />
-                <span onClick={()=>handleOAuthLogin("twitter")}>Twitter</span>
+                <span onClick={handleOAuthLogin("twitter")}>Twitter</span>
               </SocialButton>
             </SocialButtonsContainer>
             <SwitchText>
