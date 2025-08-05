@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import QrScanner from "react-qr-scanner";
 import { useNavigate } from "react-router-dom";
+import { Html5Qrcode } from "html5-qrcode";
 
 const Verify = styled.div`
   background-color: ${({ theme }) => theme.colors?.background?.primary || "#fff"};
@@ -44,6 +44,14 @@ const Verify = styled.div`
     &:hover {
       background-color: #2563eb;
     }
+
+    &:disabled {
+      background-color: #ccc;
+      color: #666;
+      border: 1px solid #aaa;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
   }
 `;
 
@@ -52,6 +60,8 @@ const VerificationPage = () => {
   const [showQRReader, setShowQRReader] = useState(false);
   const [hasScanned, setHasScanned] = useState(false);
   const navigate = useNavigate();
+  const qrRef = useRef(null);
+  const html5QrCodeRef = useRef(null);
 
   const handleVerify = () => {
     if (serial.trim() === "") {
@@ -61,28 +71,68 @@ const VerificationPage = () => {
     navigate(`/verification/${serial.trim()}`);
   };
 
-  const handleQRScan = (result) => {
-  console.log("Scanned result:", result);
-  if (result && !hasScanned) {
-    const scannedText = result?.text || result?.data || "";
-    console.log("Scanned text:", scannedText);
-    if (scannedText) {
+  const handleQRScanSuccess = (decodedText, decodedResult) => {
+    if (!hasScanned) {
       setHasScanned(true);
-      setSerial(scannedText.trim());
-      navigate(`/verification/${scannedText.trim()}`);
+      setSerial(decodedText.trim());
+      navigate(`/verification/${decodedText.trim()}`);
     }
-  }
-};
-
-
-  const handleQRError = (err) => {
-    console.error("QR Scan Error:", err);
-    alert("QR Scan failed. Please try again.");
   };
+
+  const handleQRScanError = (error) => {
+    console.warn("QR Scan Error", error);
+  };
+
+  useEffect(() => {
+    if (showQRReader && qrRef.current && !html5QrCodeRef.current) {
+      html5QrCodeRef.current = new Html5Qrcode("qr-reader");
+
+      Html5Qrcode.getCameras()
+        .then((devices) => {
+          if (devices && devices.length) {
+            const cameraId = devices[0].id;
+            html5QrCodeRef.current
+              .start(
+                cameraId,
+                {
+                  fps: 10,
+                  qrbox: 250,
+                },
+                handleQRScanSuccess,
+                handleQRScanError
+              )
+              .catch((err) => {
+                console.error("Unable to start scanning", err);
+                alert("QR scanner initialization failed.");
+              });
+          }
+        })
+        .catch((err) => {
+          console.error("Camera access error", err);
+          alert("No camera found or permission denied.");
+        });
+    }
+
+    return () => {
+      if (html5QrCodeRef.current) {
+        html5QrCodeRef.current.stop().then(() => {
+          html5QrCodeRef.current.clear();
+          html5QrCodeRef.current = null;
+        });
+      }
+    };
+  }, [showQRReader]);
 
   return (
     <Verify>
-      <h3 style={{ fontFamily: "Google Sans, sans-serif", fontSize: "1.5rem", fontWeight: 700, color: "#3b82f6" }}>
+      <h3
+        style={{
+          fontFamily: "Google Sans, sans-serif",
+          fontSize: "1.5rem",
+          fontWeight: 700,
+          color: "#3b82f6",
+        }}
+      >
         Certificate Verification
       </h3>
 
@@ -97,46 +147,26 @@ const VerificationPage = () => {
 
       <button onClick={handleVerify}>Verify Now</button>
 
-      {/* <button
-      
+      <button
         onClick={() => {
-          setHasScanned(false); 
-          setShowQRReader(!showQRReader);
+          setHasScanned(false);
+          setShowQRReader((prev) => !prev);
         }}
-        
       >
         {showQRReader ? "Close QR Scanner" : "Scan QR Code"}
-      </button> */}
-      <button
-    disabled
-    onClick={() => {
-      setHasScanned(false);
-      setShowQRReader(!showQRReader);
-    }}
-    style={{
-      backgroundColor: "#ccc",
-      color: "#666",
-      border: "1px solid #aaa",
-      padding: "10px 20px",
-      borderRadius: "5px",
-      cursor: "not-allowed",
-      fontWeight: "bold",
-      opacity: 0.6,
-      position: "relative",
-    }}
-  >
-    {showQRReader ? "Close QR Scanner" : "Scan QR Code"}
-  </button>
+      </button>
 
       {showQRReader && (
-        <div style={{ marginTop: "1rem", width: "100%", maxWidth: "350px" }}>
-          <QrScanner
-            delay={300}
-            onError={handleQRError}
-            onScan={handleQRScan}
-            style={{ width: "100%" }}
-          />
-        </div>
+        <div
+          id="qr-reader"
+          ref={qrRef}
+          style={{
+            marginTop: "1rem",
+            width: "100%",
+            maxWidth: "350px",
+            height: "300px",
+          }}
+        />
       )}
     </Verify>
   );
