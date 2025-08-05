@@ -29,7 +29,7 @@ const CertificateDisplay = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/certificate/${serial}`)
+    fetch(`https://gdg-website-2025-oghz.vercel.app/api/certificate/${serial}`)
       .then((res) => {
         if (!res.ok) throw new Error("Invalid or unverified certificate.");
         return res.json();
