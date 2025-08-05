@@ -3,6 +3,7 @@ import NextEventCountdown from '../components/events/NextEventCountdown';
 import RegisterModal from '../components/RegisterForm';
 import styled from 'styled-components';
 import { QrCode } from 'lucide-react';
+import VerificationPage from '../components/Verification';
 
 const QR = styled(QrCode)`
   color: ${({ theme }) => theme.colors.primary};
@@ -132,15 +133,7 @@ export default function EventsSection() {
   return (
     <>
       <EventsWrapper>
-        <Verify>
-          <h3 style={{ fontFamily: 'Google Sans, sans-serif', fontSize: '1.5rem', fontWeight: 700, color: '#3b82f6' }}>
-            Certificate Verification
-          </h3>
-          <QR size={70} />
-          <label htmlFor="serial">Serial Number</label>
-          <input id="serial" type="text" placeholder="e.g., ABC123456789" />
-          <button onClick={() => setVerify(true)}>Verify Now</button>
-        </Verify>
+        <VerificationPage />
         <NextEventCountdown event={nextEvent} setClose={setClose} />
       </EventsWrapper>
 

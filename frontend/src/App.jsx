@@ -5,6 +5,7 @@ import GlobalStyles from './styles/GlobalStyles'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 import AppContainer from './utils/AppContainer'
 import Spinner from './components/GDG-Spinner'
+import CertificateDisplay from './pages/CertificateDisplay'
 const HomePage =lazy(()=>import( './pages/HomePage'));
 const Events =lazy(()=>import('./pages/Events'));
 const Team =lazy(()=>import('./pages/Team'));
@@ -39,6 +40,7 @@ function App() {
              </Route>
              <Route path='/auth' element={<AuthPage />} />
              <Route path="/auth/callback" element={<AuthCallback/>} />
+             <Route path="/verification/:serial" element={<CertificateDisplay />} />
           </Routes>
     </StyledThemeProvider>
       </Suspense>
