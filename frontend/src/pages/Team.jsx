@@ -180,7 +180,7 @@ const teamData =[
     "role": "Web Dev Lead",
     "badge": "Web Developer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQF1BCDvEoRJZw/profile-displayphoto-crop_800_800/B56Zgnixf7HkAM-/0/1753010086392?e=1757548800&v=beta&t=IDNeaYzST-b8KtrbAgQI4uw7G9VUpLX_Wh8-2g9X8K4",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -193,7 +193,7 @@ const teamData =[
     "role": "Web Dev Lead",
     "badge": "Web Developer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQEa89vnpYSKzg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1723404895368?e=1757548800&v=beta&t=aOn0H36gOZyAc-MaRTbdu5pdlENlcoXqyZ9SV7zyPDM",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -206,7 +206,7 @@ const teamData =[
     "role": "Web Dev Lead",
     "badge": "Web Developer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQEZ_19pHOlqUA/profile-displayphoto-crop_800_800/B56Zh1xBNaG4AM-/0/1754322443287?e=1757548800&v=beta&t=Kp_N7f1S9ELbxD2ozM_WNllpL2Xm-D9h0LBDiz_9ds8",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -219,7 +219,7 @@ const teamData =[
     "role": "Android Dev Lead",
     "badge": "Android Developer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D4D03AQFJJlEyHTS5zw/profile-displayphoto-shrink_400_400/B4DZaYK.6JG0Ak-/0/1746309739690?e=1757548800&v=beta&t=PaC9ykbJEQlhiBj0EzVjHVw_oLByBShfekRBPyoZVJ0",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -232,7 +232,7 @@ const teamData =[
     "role": "Android Dev Lead",
     "badge": "Android Developer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQHmb7KWgJr-oQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1733056715934?e=1757548800&v=beta&t=jjKb4Tf9hBTpF83hBZCjm1Ixi3TLorvKoMNfiXmRAHs",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -245,7 +245,7 @@ const teamData =[
     "role": "Android Dev Lead",
     "badge": "Android Developer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQF4NNPlcjywzA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1703076685260?e=1757548800&v=beta&t=whaauTeZzv5JFZ0WEfIE4493W7Tuttcl-cNHO-PR84A",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -258,7 +258,7 @@ const teamData =[
     "role": "Design Lead",
     "badge": "Designer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQFKDYvrS4DpMg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710610293596?e=1757548800&v=beta&t=4rSmedSBlreiwIO1Bt04Huju2nf22ZX-nWFgdbb5Ba4",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -271,7 +271,7 @@ const teamData =[
     "role": "Design Lead",
     "badge": "Designer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQHLboAv1WBDOA/profile-displayphoto-shrink_800_800/B56ZdgLlZpG0Ac-/0/1749665339927?e=1757548800&v=beta&t=2K-igXb45Ra9uccHSdYrFiNUqI2KDDj4NsVfMNhA0cg",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -284,7 +284,7 @@ const teamData =[
     "role": "Design Lead",
     "badge": "Designer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQGdNAk-qG4hKw/profile-displayphoto-shrink_800_800/B56ZSFAiQcHoAc-/0/1737398299316?e=1757548800&v=beta&t=a4n6u5hmzDdXaLY9D9kC8YQ2szpgLYA7R1ql7LeKlm0",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -297,7 +297,7 @@ const teamData =[
     "role": "Design Lead",
     "badge": "Designer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQGWwlhXsCP9lw/profile-displayphoto-shrink_800_800/B56ZY._EODGQAk-/0/1744813443460?e=1757548800&v=beta&t=mAYbj1konDnvfCNf01kF-zt-yXUgLFo6IY-YCPNO1Go",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -310,7 +310,7 @@ const teamData =[
     "role": "DSA/CP Lead",
     "badge": "Competitive Programmer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQFbKt16IW12Ag/profile-displayphoto-crop_800_800/B56ZhLiDHXHkAI-/0/1753613875792?e=1757548800&v=beta&t=UiguwgxlfpUIfa7zyz2Va-iDECH-E3WoqDCayFqk_DE",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -323,7 +323,7 @@ const teamData =[
     "role": "DSA/CP Lead",
     "badge": "Competitive Programmer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQGycROglmsqBQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724610837222?e=1757548800&v=beta&t=qwXEG5C4PYO7ga9Gkt1sFfaamAJmoHfy3xJhgB2QlIo",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -336,7 +336,7 @@ const teamData =[
     "role": "DSA/CP Lead",
     "badge": "Competitive Programmer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQECWBk897J3zw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729078511479?e=1757548800&v=beta&t=eSkzFgmswrjpVirQwGFVdHL9s0uW7BjdRaw_yfczVp0",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -345,11 +345,11 @@ const teamData =[
   },
   {
     "id": 15,
-    "name": "Kunal",
+    "name": "Kunal Shrivastav",
     "role": "DSA/CP Lead",
     "badge": "Competitive Programmer",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D4D35AQEnfej3Rn6K9w/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1702121778771?e=1754974800&v=beta&t=LUhT2Ib91vAhsPDHAXv3XnjjIIcycUiYhtWkaXYXSIs",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -362,7 +362,7 @@ const teamData =[
     "role": "Content & Management Lead",
     "badge": "Content Creator",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQHSeE_4U6GRrg/profile-displayphoto-shrink_800_800/B56ZOhcq0SGwAc-/0/1733580480295?e=1757548800&v=beta&t=EcvAhwC6cagz-NWne_bt4dOX-ujwoAn-VZTrenrVZuM",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -375,7 +375,7 @@ const teamData =[
     "role": "Content & Management Lead",
     "badge": "Content Creator",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQHRMH-HEBPM6A/profile-displayphoto-crop_800_800/B56ZeHZyFuGQAQ-/0/1750323375140?e=1757548800&v=beta&t=aWonbYhBNeGiS49iUIhsudlveptxJD-sHSQnC-hwH80",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -388,7 +388,7 @@ const teamData =[
     "role": "Content & Management Lead",
     "badge": "Content Creator",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D4E03AQEdfpiCZDBydg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722261829049?e=1757548800&v=beta&t=xrhwlwVFRImdJp2MKLZUEQhJfDM9X7lt7uZTtyZomb0",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -401,7 +401,7 @@ const teamData =[
     "role": "Content & Management Lead",
     "badge": "Content Creator",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQGUxCdpq4t6Ww/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729175434582?e=1757548800&v=beta&t=xxIS4ohaFE1sI5nk8tQ3myMOy6oUtSlsoAib6jSttpc",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -414,7 +414,7 @@ const teamData =[
     "role": "Content & Management Lead",
     "badge": "Content Creator",
     "year": "2024",
-    "image": "",
+    "image": "https://media.licdn.com/dms/image/v2/D4E03AQG_P2_fBxurTA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710781652551?e=1757548800&v=beta&t=gmb5_8m7DDg3BOpafOubXHyrRjut_0NayixneRYeDm0",
     "social": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com",
@@ -427,6 +427,7 @@ const teamData =[
     "role": "Web & Firebase Team",
     "badge": "Web Developer",
     "year": "2023",
+    "image":"https://media.licdn.com/dms/image/v2/D5603AQGkEqGr3-BnRQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718821349966?e=1757548800&v=beta&t=3eubEjrzfO9m8m1YUxAMPrBwbT3OSQIQ7TNVtlFrXG0",
     "social": {
       "linkedin": "",
       "twitter": "",
@@ -438,6 +439,7 @@ const teamData =[
     "name": "Sandeep Singh (ECE)",
     "role": "Web & Firebase Team",
     "badge": "Web Developer",
+    "image":"https://media.licdn.com/dms/image/v2/D5603AQGhTq9LehoOAQ/profile-displayphoto-shrink_400_400/B56ZUjUVFPGsAg-/0/1740054287396?e=1757548800&v=beta&t=J0qOBfMYam5QmcL4BhUeJqKFokFonxnafn4Ve2TV1L0",
     "year": "2023",
     "social": {
       "linkedin": "",
@@ -451,6 +453,7 @@ const teamData =[
     "role": "Web & Firebase Team",
     "badge": "Web Developer",
     "year": "2023",
+    "image":"https://media.licdn.com/dms/image/v2/D5635AQFKYMQbEvwlxA/profile-framedphoto-shrink_400_400/B56ZYk4fCOGUAc-/0/1744375509778?e=1754974800&v=beta&t=9KS8yVb3ebL-nwMbnWCdeHlMXq5Ys0RvWDYYkvvn9SM",
     "social": {
       "linkedin": "",
       "twitter": "",
@@ -535,6 +538,7 @@ const teamData =[
     "role": "GDG Lead 2024",
     "badge": "Android Developer",
     "year": "2023",
+    "image": "https://media.licdn.com/dms/image/v2/D5603AQFesvWVoJIP6Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1711456735826?e=1757548800&v=beta&t=JOEvScITNvMTpYdAaAOG293lHxhA69wFObtbl51S8o8",
     "social": {
       "linkedin": "",
       "twitter": "",
@@ -740,6 +744,7 @@ const teamData =[
     "role": "GDG Lead 2023",
     "badge": "AI/ML Enthusiast",
     "year": "2022",
+    "image":"https://media.licdn.com/dms/image/v2/D5635AQGAoP64cbfVPw/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1736012190248?e=1754974800&v=beta&t=kM8fJhOGIzOB0-ccuz98xdUiXSAyQpXnUtnD6HfbJUs",
     "social": {
       "linkedin": "",
       "twitter": "",
