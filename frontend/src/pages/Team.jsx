@@ -522,7 +522,7 @@ const teamData = [
     "role": "Web & Firebase Team",
     "badge": "Web Developer",
     "year": "2023",
-    "image": "https://media.licdn.com/dms/image/v2/D5635AQFKYMQbEvwlxA/profile-framedphoto-shrink_400_400/B56ZYk4fCOGUAc-/0/1744375509778?e=1754974800&v=beta&t=9KS8yVb3ebL-nwMbnWCdeHlMXq5Ys0RvWDYYkvvn9SM",
+    "image": "https://www.linkedin.com/dms/prv/image/v2/D5606AQE4cFA7xQK4Jw/messaging-image-720/B56ZiJNO1zG4AY-/0/1754648605252?m=AQKkCZYWoajXWAAAAZiJUngaL0O7lF1pkWe9jHyyc-nzYE-0P8AUJxeSMIo&ne=1&v=beta&t=l9AJsfHxnoTt2ORxfbh9ZcHXalX_-P4VP-QNMcMdOQ4",
     "social": {
       "linkedin": "",
       "twitter": "",
