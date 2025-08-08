@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Code, Globe, Users, Lightbulb, Network, Github } from 'lucide-react';
+import { Smartphone , Globe, Bot, CircuitBoard , Shield, Cpu, Cloud, Network, Link, Server } from 'lucide-react';
 import styled from 'styled-components';
 import '../styles/About.css';
 
@@ -160,27 +160,39 @@ const About = () => {
       description: "Connect with developers from around the world and be part of Google's global developer network.",
     },
     {
-      icon: <Code size={36} />,
+      icon: <Smartphone  size={36} />,
       title: 'Android Development',
       description: 'Learn new technologies through practical workshops led by industry experts and Google Developer Experts.',
     },
     {
-      icon: <Users size={36} />,
+      icon: <div className="flex items-center gap-1">
+<Bot size={48} color="#4F46E5" />
+<CircuitBoard size={20} color="#4F46E5" />
+</div>,
       title: 'Artificial Intelligence & Machine Learning',
       description: 'Meet like-minded developers, form valuable connections, and collaborate on exciting projects.',
     },
     {
-      icon: <Lightbulb size={36} />,
+      icon: <div className="flex items-center gap-1">
+  <Shield size={44} color="#9042f5" />
+  <Cpu size={20} color="#9042f5" />
+</div>,
       title: 'Cybersecurity and Cryptography',
       description: 'Get inspired, share ideas, and stay ahead of the curve with the latest Google technologies and tools.',
     },
     {
-      icon: <Network size={36} />,
+      icon: <div className="flex items-center gap-1">
+  <Network size={22} color="#f59e42" />
+  <Link size={40} color="#f59e42" />
+</div>,
       title: 'Blockchain & Web 3.0',
       description: 'Focus on the future of decentralized technologies.',
     },
     {
-      icon: <Github size={36} />,
+      icon: <div className="flex items-center gap-1">
+  <Server size={20} color="#2563EB" />
+  <Cloud size={44} color="#2563EB" />
+</div>,
       title: 'Open Source & Cloud Computing',
       description: 'Harness the power of open-source tools and scalable cloud solutions.',
     },
@@ -192,7 +204,51 @@ const About = () => {
         <div ref={sectionRef} className="about-header animate-on-scroll">
           <h2 className="section-title">About GDG on Campus MMMUT</h2>
           <p className="about-description">
-            Founded on 26th September 2020 by our visionary alumnus, Abhishek Kumar Yadav, GDG MMMUT has grown from its roots as Developer Student Clubs (DSC) under the Google Developers Program to the largest developer community in our campus and region. With a mission to drive innovation, promote technology, and empower skill development, we are a thriving hub for tech enthusiasts committed to shaping the future of technology.
+            <p>
+              Founded on 26th September 2020 by our esteemed alumnus Abhishek Kumar Yadav, we
+            began as Developer Student Clubs (DSC), as a part of the Google Developers Program. Over
+            the period of time we have developed, expanded and evolved to become the largest developer
+            based community of our campus and in the region as well. Our mission has always been to
+            promote technology, foster innovation, and nurture skill development within the tech
+            community. Through workshops, hackathons, and expert sessions, we cover a diverse range
+            of domains, including:
+            </p>
+            <div className='flex flex-col items-start flex-1/6 justify-center'>
+              <p>💻 Web Development</p>
+              <p>📱 Android Development</p>
+              <p>🤖 Artificial Intelligence & Machine Learning</p>
+              <p>📊 Cybersecurity & Cryptography</p>
+              <p>🔗 Blockchain & Web 3.0</p>
+              <p>🌐 Open Source & Cloud Computing</p>
+            </div>
+            <p>In 2021, we underwent a strategic rebranding as Google Developer Student Clubs (GDSC),
+              aligning more closely with Google’s global vision of empowering students through
+              technology-driven development.</p>
+
+            <p>
+              A landmark moment arrived in 2024 with the launch of IMMERSE, our Annual Developer
+              Fest—a three-day carnival celebrating cutting-edge technologies like Web & Android
+              Development, Artificial Intelligence & Machine Learning, Cryptography & Cybersecurity,
+              Blockchain Development, Open Source & Cloud Computing, and more! Alongside technical
+              sessions, IMMERSE features Tech-Informals, blending learning with creativity and fun.
+              The same year, we evolved into Google Developer Groups (GDG) on Campus, MMMUT
+              (GDG-MMMUT), reaffirming our commitment to building a vibrant tech ecosystem. As
+              GDG-MMMUT, we continue to bridge the gap between theory and practice, offering handson learning, workshops, speaker sessions, bootcamps, events & fests that include all of Web
+            </p>
+
+            <p>
+              Development, Android Development, Artificial Intelligence & Machine Learning,
+              Cybersecurity & Cryptography, Blockchain & Web 3.0, Open Source & Cloud Computing
+              networking opportunities, and exposure to industry trends.
+              Other Than this we regularly conduct & organize events which are a part of Google
+              Developer Initative like Google Cloud Gen AI Study Jams, Google Cloud Arcade Skills
+              Boost Programme, Google’s Week of Wonders, Google’s Solution Challenge and the largest
+              worldwide fest of the Google Developer Programme i.e. DevFest
+              <a href="https://gdg.community.dev/gdg-on-campus-madan-mohan-malaviya-university-oftechnology-gorakhpur-india/"> Join Our Community!</a>
+            </p>
+
+            
+
           </p>
           <h3>Join a thriving community of Google developers.</h3>
         </div>
