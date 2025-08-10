@@ -177,7 +177,7 @@ const eventsData = [
     date: "January 20, 2025",
     time: "11:00 AM - 1:00 PM",
     location: "Auditorium, MMMUT",
-    capacity: "200 participants",
+    capacity: "300+ students",
     description: "Kickstart your journey with GDG MMMUT! Meet the team, learn about our vision, explore exciting upcoming events, and discover how you can be part of our tech-driven community.",
     image: "https://ik.imagekit.io/guxtd3sah/IMG_0710.HEIC?updatedAt=1754648851818"
 },
@@ -188,7 +188,7 @@ const eventsData = [
     date: "March 15, 2024",
     time: "10:00 AM - 4:00 PM",
     location: "CS Department, MMMUT",
-    capacity: "50 participants",
+    capacity: "25 qualified teams",
     description: "A high-energy hackathon where innovators and problem-solvers collaborate to build impactful tech solutions for real-world challenges.",
     image: "https://ik.imagekit.io/vkajf4kza/IMG_0376.JPG?updatedAt=1754639902883"
 },

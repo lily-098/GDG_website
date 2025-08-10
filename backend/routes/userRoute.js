@@ -11,7 +11,8 @@ const { oauthCallback } = require("../controllers/authController");
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/profile", protect, getUserProfile);
-
+ router.post('/contact',createContact);
+ 
 const generateToken = (userId) => {
   const JWT_SECRET="ilovenobody"
   return jwt.sign({ userId }, JWT_SECRET, { expiresIn: "7d" });

@@ -23,15 +23,15 @@ const HeroSection = () => {
           </div>
           
           <div className="hero-image">
-            {/* <div className="rotating-cube">
+             <div className="rotating-cube">
               <div className="cube-face front">G</div>
               <div className="cube-face back">G</div>
               <div className="cube-face right">D</div>
               <div className="cube-face left">I/O</div>
               <div className="cube-face top">DEV</div>
               <div className="cube-face bottom">TECH</div>
-            </div> */}
-            <img src={gdgGif} alt="GDG logo animation" />
+            </div> 
+            {/* <img src={gdgGif} alt="GDG logo animation" /> */}
           </div>
         </div>
 

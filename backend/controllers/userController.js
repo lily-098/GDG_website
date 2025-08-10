@@ -24,6 +24,7 @@ const uploadFileToCloudinary = async (file, folder) => {
 // Register a new user
 const registerUser = async (req, res) => {
   try {
+    
     const { name, email, password } = req.body;
 
     // Check if user already exists

@@ -28,6 +28,7 @@
   opacity: 0;
   transform: translateY(30px);
   transition: opacity var(--transition-long), transform var(--transition-long);
+  padding: 15px;
 }
 
 .hero-content.visible {

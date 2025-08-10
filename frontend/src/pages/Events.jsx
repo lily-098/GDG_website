@@ -152,9 +152,20 @@ export default function Events() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 2, delay: 1.5 }}
                 >
-                  <div className="lg:h-[40rem] lg:w-[20rem] hidden lg:block">
-                    <img src={gdgGif} alt="GDG logo animation" />
-                  </div>
+                  <div className="lg:h-[22rem] lg:w-[20rem] hidden lg:block">
+                    <div className="hero-image">
+             <div className="rotating-cube">
+              <div className="cube-face front">G</div>
+              <div className="cube-face back">G</div>
+              <div className="cube-face right">D</div>
+              <div className="cube-face left">I/O</div>
+              <div className="cube-face top">DEV</div>
+              <div className="cube-face bottom">TECH</div>
+            </div> 
+            {/* <img src={gdgGif} alt="GDG logo animation" /> */}
+          </div>
+        </div>
+                 
 
                 </motion.div>
               </div>

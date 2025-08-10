@@ -112,5 +112,4 @@ export default function AuthProvider({ children }) {
     </Authcontext.Provider>
   );
 }
-
 export { Authcontext };
