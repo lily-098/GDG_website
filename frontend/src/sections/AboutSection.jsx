@@ -160,16 +160,25 @@ const AboutSection = () => {
     <AboutSectionContainer id="about" className="animate-section">
       <AboutWrapper>
         <AboutContent>
-          <SectionTitle>About GDG MMMUT</SectionTitle>
+          <SectionTitle>About  GDG On Campus MMMUT</SectionTitle>
           <AboutText>
-            Google Developer Group MMMUT is a local community of developers, designers, and technology enthusiasts
-            who are interested in Google's technologies and platforms. Our mission is to create a vibrant and
-            inclusive tech community at MMMUT focused on learning, sharing, and building with technology.
-          </AboutText>
-          <AboutText>
-            We organize various events like tech talks, workshops, study jams, hackathons, and social gatherings
-            throughout the year. These events provide opportunities to learn new skills, connect with fellow
-            developers, and stay updated with the latest in tech.
+            <p>
+              Founded on 26th September 2020 by our esteemed alumnus Abhishek Kumar Yadav, we
+            began as Developer Student Clubs (DSC), as a part of the Google Developers Program. Over
+            the period of time we have developed, expanded and evolved to become the largest developer
+            based community of our campus and in the region as well. Our mission has always been to
+            promote technology, foster innovation, and nurture skill development within the tech
+            community. Through workshops, hackathons, and expert sessions, we cover a diverse range
+            of domains, including:
+            </p>
+            <div className='flex flex-col items-start flex-1/6 justify-center'>
+              <p>💻 Web Development</p>
+              <p>📱 Android Development</p>
+              <p>🤖 Artificial Intelligence & Machine Learning</p>
+              <p>📊 Cybersecurity & Cryptography</p>
+              <p>🔗 Blockchain & Web 3.0</p>
+              <p>🌐 Open Source & Cloud Computing</p>
+            </div>
           </AboutText>
           
           <Stats ref={statsRef}>
@@ -197,7 +206,7 @@ const AboutSection = () => {
               <StatNumber $color="red">
                 {
                   // Animated counter would be implemented with GSAP in a real app
-                  "50+"
+                  "40+"
                 }
               </StatNumber>
               <StatLabel>Events Organized</StatLabel>
@@ -212,7 +221,7 @@ const AboutSection = () => {
               <StatNumber $color="green">
                 {
                   // Animated counter would be implemented with GSAP in a real app
-                  "20+"
+                  "10+"
                 }
               </StatNumber>
               <StatLabel>Speakers</StatLabel>
@@ -242,7 +251,7 @@ const AboutSection = () => {
               <StatNumber $color="blue">
                 {
                   // Animated counter would be implemented with GSAP in a real app
-                  "5+"
+                  "2+"
                 }
               </StatNumber>
               <StatLabel>Hackathons</StatLabel>
