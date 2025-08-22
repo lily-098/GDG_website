@@ -54,12 +54,13 @@ const uploadRoutes = require("./routes/FileUpload"); // File upload routes
 const authRoutes = require("./routes/userRoute"); // User authentication routes
 const enquiryRoutes = require("./routes/registerRoute"); // Event registration routes
 const certificateRoutes = require("./routes/certificateVerifyRoute");
-
+const rsvpRoutes=require("./routes/RSVProutes"); // RSVP routes
 // API route mounting
 app.use("/api/auth", authRoutes);          // Standard auth routes
 app.use("/api/auth/upload", uploadRoutes); // File upload routes
-app.use('/api/auth/enquiry',enquiryRoutes);
+app.use('/api/auth/enquiry', enquiryRoutes);
 app.use("/api/certificate", certificateRoutes);
+app.use("/api/rsvp", rsvpRoutes);
 
 // Root endpoint
 app.get("/", (req, res) => {

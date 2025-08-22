@@ -194,6 +194,7 @@ const Header = () => {
         <NavLink href="/team" onClick={closeMenu}>Team</NavLink>
         <NavLink href="/#sponsors" onClick={closeMenu}>Sponsor</NavLink>
         <NavLink href="/#contact" onClick={closeMenu}>Contact</NavLink>
+        
 
         {isAuthenticated && (
           <Profile>
