@@ -176,7 +176,7 @@ const RSVPForm = ({ eventId, onSuccess }) => {
     setSubmitStatus('idle');
 
     try {
-      const response = await axios.post(`https://gdg-website-2025-delta.vercel.app/api/rsvp/user`, formData);
+      const response = await axios.post(`https://gdg-website-2025-oghz.vercel.app/api/rsvp/user`, formData);
       setSubmitStatus('success');
       setTimeout(() => onSuccess(), 2000);
     } catch (err) {
