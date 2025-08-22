@@ -274,7 +274,7 @@ const RSVPForm = ({ eventId, onSuccess }) => {
 
       {submitStatus === 'error' && (
         <ErrorBox>
-          <AlertCircle size={16} /> Something went wrong. Please try again.
+          <AlertCircle size={16} /> You have already registered.
         </ErrorBox>
       )}
 

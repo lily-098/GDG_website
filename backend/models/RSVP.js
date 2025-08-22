@@ -17,11 +17,11 @@ const RSVPSchema = new mongoose.Schema(
     },
     branch: {
       type: String,
-      required: true,
+      required: false,
     },
     domain:{
       type:String,
-      required:true,
+      required:false,
     },
     message:{
         type:String
