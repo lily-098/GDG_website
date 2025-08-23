@@ -186,7 +186,6 @@ const RSVPForm = ({ eventId, onSuccess }) => {
       setIsSubmitting(false);
     }
   };
-
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
