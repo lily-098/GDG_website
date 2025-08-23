@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, Loader2, Heart } from 'lucide-react';
 import axios from 'axios';
 
 // 🔹 Styled Components
@@ -152,7 +152,7 @@ const RSVPForm = ({ eventId, onSuccess }) => {
     domain: "development",
     message: '',
   });
-
+  const email="shreyat190105@gmail.com";
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('idle');
@@ -198,7 +198,7 @@ const RSVPForm = ({ eventId, onSuccess }) => {
     return (
       <SuccessBox>
         <SuccessIconWrapper>
-          <CheckCircle size={32} color="#34a853" />
+          {formData.email===email?<Heart size={32} color="#e63946" />:<CheckCircle size={32} color="#34a853" />}
         </SuccessIconWrapper>
         <h3>Registration Successful!</h3>
         <p>Thank you for registering. You'll receive a confirmation email shortly.</p>
@@ -268,7 +268,7 @@ const RSVPForm = ({ eventId, onSuccess }) => {
           rows={3}
           value={formData.message}
           onChange={(e) => handleInputChange('message', e.target.value)}
-          placeholder="Your message (optional)"
+          placeholder="Are You Excited?"
         />
       </div>
 
