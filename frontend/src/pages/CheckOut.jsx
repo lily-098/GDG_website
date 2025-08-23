@@ -170,9 +170,7 @@ function CheckOut() {
    
       <AppWrapper>
         {/* Theme Toggle */}
-        <ThemeToggleWrapper>
-            <ThemeToggle />
-        </ThemeToggleWrapper>
+       
         {/* Event Header */}
 
         {/* Main Content */}
