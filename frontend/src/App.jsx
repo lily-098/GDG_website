@@ -7,6 +7,7 @@ import AppContainer from './utils/AppContainer'
 import Spinner from './components/GDG-Spinner'
 import CertificateDisplay from './pages/CertificateDisplay'
 import CheckOut from './pages/CheckOut'
+import ProfileSettingsPage from './components/ProfileModal';
 const HomePage =lazy(()=>import( './pages/HomePage'));
 const Events =lazy(()=>import('./pages/Events'));
 const Team =lazy(()=>import('./pages/Team'));
@@ -43,6 +44,7 @@ function App() {
              <Route path="/auth/callback" element={<AuthCallback/>} />
              <Route path="/verification/:serial" element={<CertificateDisplay />} />
              <Route path='/rsvp' element={<CheckOut />} />
+             <Route path="/settings" element={<ProfileSettingsPage/>} />
           </Routes>
     </StyledThemeProvider>
       </Suspense>

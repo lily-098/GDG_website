@@ -2,8 +2,9 @@
   "dependencies": {
     "@cloudinary/react": "^1.13.1",
     "@cloudinary/url-gen": "^1.21.0",
-    "axios": "^1.9.0",
+    "axios": "^1.12.2",
     "bcryptjs": "^2.4.3",
+    "cheerio": "^1.1.2",
     "cloudinary": "^2.5.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -25,5 +26,12 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
-  }
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
