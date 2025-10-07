@@ -5,7 +5,7 @@ import { User, LogOut, Settings, ChevronDown } from "lucide-react";
 import { useAuth } from "../contexts/useAuth";
 import { useNavigate } from "react-router-dom";
 
-
+// ---------- Styled Components ----------
 const ButtonContainer = styled.div`
   position: relative;
   display: inline-block;
@@ -30,7 +30,6 @@ const ProfileBtn = styled.button`
     #f4b400,
     #0f9d58
   ) 1;
-
   &:hover {
     background: #111;
   }
@@ -68,7 +67,6 @@ const Option = styled.div`
   font-weight: 500;
   transition: background 0.2s;
   color: #fff;
-
   &:hover {
     background: #222;
   }
@@ -116,7 +114,6 @@ const Input = styled.input`
   border-radius: 8px;
   background: #111;
   color: #fff;
-
   &:focus {
     border-color: #4285f4;
   }
@@ -135,62 +132,77 @@ const SaveBtn = styled.button`
   }
 `;
 
+// ---------- Component ----------
 export default function ProfileButton() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-
   const [leetcodeRank, setLeetcodeRank] = useState(null);
   const [codechefRating, setCodechefRating] = useState(null);
 
   const [showLCModal, setShowLCModal] = useState(false);
   const [showCCModal, setShowCCModal] = useState(false);
-  const [lcHandle, setLcHandle] = useState(localStorage.getItem("leetcodeHandle") || "");
-  const [ccHandle, setCcHandle] = useState(localStorage.getItem("codechefHandle") || "");
+  const [lcHandle, setLcHandle] = useState("");
+  const [ccHandle, setCcHandle] = useState("");
 
-  
+  // --- helper to build per-user key ---
+  const getKey = (platform) =>
+    `${platform}_handle_${user?.email || "guest"}`;
+
+  // --- fetch functions ---
   const fetchLeetcode = async (handle) => {
     try {
       const res = await fetch(`http://localhost:5000/api/leetcode/${handle}`);
       const data = await res.json();
-      if (!data.error) {
-        setLeetcodeRank(data.ranking || null);
-      }
+      if (!data.error) setLeetcodeRank(data.ranking || null);
     } catch (err) {
       console.error(err);
     }
   };
 
- 
   const fetchCodechef = async (handle) => {
     try {
       const res = await fetch(`http://localhost:5000/api/codechef/${handle}`);
       const data = await res.json();
-      if (!data.error) {
-        setCodechefRating(data.rating || null);
-      }
+      if (!data.error) setCodechefRating(data.rating || null);
     } catch (err) {
       console.error(err);
     }
   };
 
- 
+  // --- on user change, load that user’s handles ---
   useEffect(() => {
-    if (lcHandle) fetchLeetcode(lcHandle);
-    if (ccHandle) fetchCodechef(ccHandle);
-  }, []);
+    if (!user) return;
+    const savedLC = localStorage.getItem(getKey("leetcode"));
+    const savedCC = localStorage.getItem(getKey("codechef"));
+    if (savedLC) {
+      setLcHandle(savedLC);
+      fetchLeetcode(savedLC);
+    } else {
+      setLcHandle("");
+      setLeetcodeRank(null);
+    }
+    if (savedCC) {
+      setCcHandle(savedCC);
+      fetchCodechef(savedCC);
+    } else {
+      setCcHandle("");
+      setCodechefRating(null);
+    }
+  }, [user]);
 
+  // --- Save Handlers ---
   const handleSaveLeetcode = () => {
-    if (lcHandle.trim() !== "") {
-      localStorage.setItem("leetcodeHandle", lcHandle);
+    if (lcHandle.trim()) {
+      localStorage.setItem(getKey("leetcode"), lcHandle);
       fetchLeetcode(lcHandle);
     }
     setShowLCModal(false);
   };
 
   const handleSaveCodechef = () => {
-    if (ccHandle.trim() !== "") {
-      localStorage.setItem("codechefHandle", ccHandle);
+    if (ccHandle.trim()) {
+      localStorage.setItem(getKey("codechef"), ccHandle);
       fetchCodechef(ccHandle);
     }
     setShowCCModal(false);
@@ -214,12 +226,12 @@ export default function ProfileButton() {
           >
             <Option onClick={() => setShowLCModal(true)}>
               <span>LeetCode Rank</span>
-              <span>{leetcodeRank !== null ? leetcodeRank : "—"}</span>
+              <span>{leetcodeRank ?? "—"}</span>
             </Option>
 
             <Option onClick={() => setShowCCModal(true)}>
               <span>CodeChef Rating</span>
-              <span>{codechefRating !== null ? codechefRating : "—"}</span>
+              <span>{codechefRating ?? "—"}</span>
             </Option>
 
             <Divider />
@@ -240,7 +252,7 @@ export default function ProfileButton() {
         )}
       </AnimatePresence>
 
-   
+      {/* LeetCode Modal */}
       {showLCModal && (
         <ModalBackdrop>
           <ModalBox>
@@ -255,6 +267,7 @@ export default function ProfileButton() {
         </ModalBackdrop>
       )}
 
+      {/* CodeChef Modal */}
       {showCCModal && (
         <ModalBackdrop>
           <ModalBox>

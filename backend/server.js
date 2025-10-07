@@ -4,7 +4,19 @@ import * as cheerio from "cheerio";
 import cors from "cors";
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://your-frontend-domain.onrender.com"],
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+app.use(express.json());
+
+// --- Root Route (Health Check) ---
+app.get("/", (req, res) => {
+  res.send("✅ CodeChef + LeetCode Scraper API is running successfully!");
+});
 
 // --- CodeChef Route ---
 app.get("/api/codechef/:handle", async (req, res) => {
@@ -39,7 +51,7 @@ app.get("/api/codechef/:handle", async (req, res) => {
       contests,
     });
   } catch (err) {
-    console.error(err.message);
+    console.error("CodeChef Fetch Error:", err.message);
     res.status(500).json({ error: "Failed to fetch CodeChef profile" });
   }
 });
@@ -73,19 +85,17 @@ app.get("/api/leetcode/:handle", async (req, res) => {
       variables: { username: handle }
     };
 
-   const { data } = await axios.post('https://leetcode.com/graphql', query, {
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
-  }
-});
+    const { data } = await axios.post("https://leetcode.com/graphql", query, {
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+      }
+    });
 
-
-   if (!data.data || !data.data.matchedUser) {
-  return res.status(404).json({ status: 'error', message: 'user does not exist' });
-}
-
+    if (!data.data || !data.data.matchedUser) {
+      return res.status(404).json({ status: "error", message: "User does not exist" });
+    }
 
     const user = data.data.matchedUser;
     res.json({
@@ -98,12 +108,13 @@ app.get("/api/leetcode/:handle", async (req, res) => {
       solvedStats: user.submitStats.acSubmissionNum
     });
   } catch (err) {
-    console.error(err.message);
+    console.error("LeetCode Fetch Error:", err.message);
     res.status(500).json({ error: "Failed to fetch LeetCode profile" });
   }
 });
 
-
-app.listen(5000, () => {
-  console.log("✅ Server running on http://localhost:5000");
+// --- Server Listen (for Render) ---
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
 });

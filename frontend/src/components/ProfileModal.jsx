@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FiCamera } from "react-icons/fi";
 
-
 const Container = styled.div`
   max-width: 820px;
   margin: 60px auto;
@@ -12,7 +11,8 @@ const Container = styled.div`
   border: 6px solid transparent;
   border-image: linear-gradient(90deg, #4285f4, #db4437, #f4b400, #0f9d58) 1;
   padding: 54px 48px 40px 48px;
-  box-shadow: 0 8px 40px rgba(66, 133, 244, 0.11), 0 6px 16px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 8px 40px rgba(66, 133, 244, 0.11),
+    0 6px 16px rgba(0, 0, 0, 0.22);
   @media (max-width: 960px) {
     max-width: 99vw;
     padding: 32px 8px;
@@ -25,7 +25,7 @@ const Row = styled.div`
   align-items: center;
   margin-bottom: 44px;
   flex-wrap: wrap;
-  @media(max-width: 700px){
+  @media (max-width: 700px) {
     flex-direction: column;
     align-items: center;
     gap: 20px;
@@ -133,7 +133,7 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px 26px;
-  @media(max-width: 600px) {
+  @media (max-width: 600px) {
     grid-template-columns: 1fr;
     gap: 13px 0;
   }
@@ -195,29 +195,35 @@ const LogoutBtn = styled.button`
 `;
 
 export default function ProfileModal({ user }) {
+  // Use user email/uid to create unique key prefix
+  const userPrefix = user?.email || user?.uid || "guest_user";
+
   const LS_KEYS = {
-    PHOTO: "profile_photo",
-    NAME: "profile_name",
-    OCCUPATION: "profile_occupation",
-    PHONE: "profile_phone",
-    EMAIL: "profile_email",
-    LC_HANDLE: "profile_leetcode_handle",
-    CC_HANDLE: "profile_codechef_handle",
-    LC_RANK: "profile_leetcode_rank",
-    CC_RANK: "profile_codechef_rating",
+    PHOTO: `${userPrefix}_photo`,
+    NAME: `${userPrefix}_name`,
+    OCCUPATION: `${userPrefix}_occupation`,
+    PHONE: `${userPrefix}_phone`,
+    EMAIL: `${userPrefix}_email`,
+    LC_HANDLE: `${userPrefix}_leetcode_handle`,
+    CC_HANDLE: `${userPrefix}_codechef_handle`,
+    LC_RANK: `${userPrefix}_leetcode_rank`,
+    CC_RANK: `${userPrefix}_codechef_rating`,
   };
 
-  const [photo, setPhoto] = useState(localStorage.getItem(LS_KEYS.PHOTO) || "https://via.placeholder.com/150.png?text=Photo");
+  const [photo, setPhoto] = useState(
+    localStorage.getItem(LS_KEYS.PHOTO) ||
+      "https://via.placeholder.com/150.png?text=Photo"
+  );
   const [name, setName] = useState(localStorage.getItem(LS_KEYS.NAME) || user?.name || "");
   const [occupation, setOccupation] = useState(localStorage.getItem(LS_KEYS.OCCUPATION) || "");
   const [phone, setPhone] = useState(localStorage.getItem(LS_KEYS.PHONE) || user?.phone || "");
   const [email, setEmail] = useState(localStorage.getItem(LS_KEYS.EMAIL) || user?.email || "");
   const [leetcodeHandle, setLeetcodeHandle] = useState(localStorage.getItem(LS_KEYS.LC_HANDLE) || "");
-  const [leetcodeRank, setLeetcodeRank] = useState(null);
+  const [leetcodeRank, setLeetcodeRank] = useState(localStorage.getItem(LS_KEYS.LC_RANK) || null);
   const [codechefHandle, setCodechefHandle] = useState(localStorage.getItem(LS_KEYS.CC_HANDLE) || "");
-  const [codechefRating, setCodechefRating] = useState(null);
+  const [codechefRating, setCodechefRating] = useState(localStorage.getItem(LS_KEYS.CC_RANK) || null);
 
- 
+  // Refresh state whenever new user logs in
   useEffect(() => {
     setPhoto(localStorage.getItem(LS_KEYS.PHOTO) || "https://via.placeholder.com/150.png?text=Photo");
     setName(localStorage.getItem(LS_KEYS.NAME) || user?.name || "");
@@ -226,52 +232,51 @@ export default function ProfileModal({ user }) {
     setEmail(localStorage.getItem(LS_KEYS.EMAIL) || user?.email || "");
     setLeetcodeHandle(localStorage.getItem(LS_KEYS.LC_HANDLE) || "");
     setCodechefHandle(localStorage.getItem(LS_KEYS.CC_HANDLE) || "");
-    setLeetcodeRank(parseInt(localStorage.getItem(LS_KEYS.LC_RANK)) || null);
-    setCodechefRating(parseInt(localStorage.getItem(LS_KEYS.CC_RANK)) || null);
+    setLeetcodeRank(localStorage.getItem(LS_KEYS.LC_RANK) || null);
+    setCodechefRating(localStorage.getItem(LS_KEYS.CC_RANK) || null);
   }, [user]);
 
-  
- const fetchLeetcodeRating = async (handle) => {
-  if (!handle) return;
-  try {
-    const res = await fetch(`http://localhost:5000/api/leetcode/${handle}`);
-    if (!res.ok) {
-      console.error("LeetCode API returned an error:", res.status);
+  const fetchLeetcodeRating = async (handle) => {
+    if (!handle) return;
+    try {
+      const res = await fetch(`http://localhost:5000/api/leetcode/${handle}`);
+      if (!res.ok) {
+        console.error("LeetCode API returned an error:", res.status);
+        setLeetcodeRank(null);
+        return;
+      }
+      const data = await res.json();
+      if (!data.error) {
+        setLeetcodeRank(data.ranking || null);
+        localStorage.setItem(LS_KEYS.LC_RANK, data.ranking || "");
+        localStorage.setItem(LS_KEYS.LC_HANDLE, handle);
+      }
+    } catch (e) {
+      console.error("Network or parsing error fetching LeetCode data", e);
       setLeetcodeRank(null);
-      return;
     }
-    const data = await res.json(); 
-    if (!data.error) {
-      setLeetcodeRank(data.ranking || null);
-      localStorage.setItem(LS_KEYS.LC_RANK, data.ranking || "");
-      localStorage.setItem(LS_KEYS.LC_HANDLE, handle);
-    }
-  } catch (e) {
-    console.error("Network or parsing error fetching LeetCode data", e);
-    setLeetcodeRank(null);
-  }
-};
+  };
 
-const fetchCodechefRating = async (handle) => {
-  if (!handle) return;
-  try {
-    const res = await fetch(`http://localhost:5000/api/codechef/${handle}`);
-    if (!res.ok) {
-      console.error("CodeChef API returned an error:", res.status);
+  const fetchCodechefRating = async (handle) => {
+    if (!handle) return;
+    try {
+      const res = await fetch(`http://localhost:5000/api/codechef/${handle}`);
+      if (!res.ok) {
+        console.error("CodeChef API returned an error:", res.status);
+        setCodechefRating(null);
+        return;
+      }
+      const data = await res.json();
+      if (!data.error) {
+        setCodechefRating(data.rating || null);
+        localStorage.setItem(LS_KEYS.CC_RANK, data.rating || "");
+        localStorage.setItem(LS_KEYS.CC_HANDLE, handle);
+      }
+    } catch (e) {
+      console.error("Network or parsing error fetching CodeChef data", e);
       setCodechefRating(null);
-      return;
     }
-    const data = await res.json();
-    if (!data.error) {
-      setCodechefRating(data.rating || null);
-      localStorage.setItem(LS_KEYS.CC_RANK, data.rating || "");
-      localStorage.setItem(LS_KEYS.CC_HANDLE, handle);
-    }
-  } catch (e) {
-    console.error("Network or parsing error fetching CodeChef data", e);
-    setCodechefRating(null);
-  }
-};
+  };
 
   const handleLeetcodeKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -294,19 +299,18 @@ const fetchCodechefRating = async (handle) => {
     }
   };
 
-  
   const handleSave = () => {
     localStorage.setItem(LS_KEYS.PHOTO, photo);
     localStorage.setItem(LS_KEYS.NAME, name);
     localStorage.setItem(LS_KEYS.OCCUPATION, occupation);
     localStorage.setItem(LS_KEYS.PHONE, phone);
     localStorage.setItem(LS_KEYS.EMAIL, email);
-    alert("Changes saved locally!");
+    alert(`Changes saved locally for ${userPrefix}!`);
   };
 
   const handleLogout = () => {
-    alert("Logging out...");
-    Object.values(LS_KEYS).forEach(key => localStorage.removeItem(key));
+    Object.values(LS_KEYS).forEach((key) => localStorage.removeItem(key));
+    alert(`User ${userPrefix} logged out!`);
   };
 
   return (
@@ -323,15 +327,16 @@ const fetchCodechefRating = async (handle) => {
           <Name
             placeholder="Your Name"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
           <Occupation
             placeholder="Occupation"
             value={occupation}
-            onChange={e => setOccupation(e.target.value)}
+            onChange={(e) => setOccupation(e.target.value)}
           />
         </TitleSection>
       </Row>
+
       <ProfileFields>
         <Grid>
           <div>
@@ -340,7 +345,7 @@ const fetchCodechefRating = async (handle) => {
               type="text"
               placeholder="LeetCode username"
               value={leetcodeHandle}
-              onChange={e => setLeetcodeHandle(e.target.value)}
+              onChange={(e) => setLeetcodeHandle(e.target.value)}
               onKeyDown={handleLeetcodeKeyDown}
             />
           </div>
@@ -348,13 +353,14 @@ const fetchCodechefRating = async (handle) => {
             <Label>LeetCode Rank</Label>
             <FieldInput type="number" disabled value={leetcodeRank ?? ""} />
           </div>
+
           <div>
             <Label>CodeChef Handle</Label>
             <FieldInput
               type="text"
               placeholder="CodeChef username"
               value={codechefHandle}
-              onChange={e => setCodechefHandle(e.target.value)}
+              onChange={(e) => setCodechefHandle(e.target.value)}
               onKeyDown={handleCodechefKeyDown}
             />
           </div>
@@ -363,22 +369,25 @@ const fetchCodechefRating = async (handle) => {
             <FieldInput type="number" disabled value={codechefRating ?? ""} />
           </div>
         </Grid>
+
         <Label>Phone Number</Label>
         <FieldInput
           type="tel"
           placeholder="+91 9000000000"
           value={phone}
-          onChange={e => setPhone(e.target.value)}
+          onChange={(e) => setPhone(e.target.value)}
         />
+
         <Label>Email</Label>
         <FieldInput
           type="email"
           placeholder="mail@example.com"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           disabled={!!user?.email}
         />
       </ProfileFields>
+
       <SaveButton onClick={handleSave}>Save Changes</SaveButton>
       <LogoutBtn onClick={handleLogout}>Logout</LogoutBtn>
     </Container>
