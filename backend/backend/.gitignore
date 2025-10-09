@@ -1,5 +1,3 @@
-backend/.env
-frontend/.env
 # Logs
 logs
 *.log
@@ -25,4 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 .env
->>>>>>> 54d9831 (added)
